@@ -16,27 +16,11 @@ import { UserListComponent } from './users/user-list/user-list.component';
 import { HttpModule } from '@angular/http';
 import { UserService } from 'src/app/users/user.service';
 import { DataStorageService } from 'src/app/shared/data-storage.services';
+import { UserItemComponent } from './users/user-list/user-item/user-item.component';
+import { AppRoutingModule } from './app-routing.module';
+import { UserDetailComponent } from './users/user-detail/user-detail.component';
+import { DropdownDirective } from './shared/dropdown.directive';
 
-const appRoutes: Routes = [
-  {
-    path: 'users', component: UsersComponent
-  },
-  {
-    path: 'tasks', component: TasksComponent
-  },
-  {
-    path: 'todos', component: TodosComponent
-  }, 
-  {
-    path: 'about', component: AboutComponent  
-  }, 
-  {
-    path: 'contact', component: ContactComponent
-  },
-  {
-    path: '', component: HomeComponent
-  }
-];
 
 @NgModule({
   declarations: [
@@ -49,13 +33,15 @@ const appRoutes: Routes = [
     AboutComponent,
     ContactComponent,
     HomeComponent,
-    UserListComponent
+    UserListComponent,
+    UserItemComponent,
+    UserDetailComponent
   ],
   imports: [
     BrowserModule, 
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(appRoutes)
+    AppRoutingModule
   ],
   providers: [UserService, DataStorageService],
   bootstrap: [AppComponent]

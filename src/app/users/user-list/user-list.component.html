@@ -2,23 +2,7 @@
   <button id="newUserBtn" class="btn btn-success" (click)="onNewUser()">New User</button>
 </div>
 <div class="container">
-  <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>Username</th>
-          <th>Firstname</th>
-          <th>Lastname</th>
-          <th>Email</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let user of users"> 
-          <td>{{user.userName}}</td>
-          <td>{{user.firstName}}</td>
-          <td>{{user.lastName}}</td>
-          <td>{{user.email}}</td> 
-        </tr>
-      </tbody>
-    </table>
- 
+    <app-user-item *ngFor="let userEl of users; let i = index" [user]="userEl"  [indexItem] = "i+1">
+
+    </app-user-item>
 </div>

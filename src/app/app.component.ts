@@ -7,16 +7,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'todo-list-app-client';
-  allowNewServer = false;
-  name = "Vu";
-  serverCreated = false;
-  serverName = '';
-  addNewServer() {
-    this.serverCreated = true;
-   
-  }
 
-  onInput(event: Event) {
-    this.serverName = (<HTMLInputElement>event.target).value;
-  }
+  
 }
