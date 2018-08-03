@@ -12,6 +12,7 @@ import { RouterModule } from '@angular/router';
 import { AboutComponent } from './core/about/about.component';
 import { ContactComponent } from './core/contact/contact.component';
 import { HomeComponent } from './core/home/home.component';
+import { UserListComponent } from './users/user-list/user-list.component';
 
 const appRoutes: Routes = [
   {
@@ -44,7 +45,8 @@ const appRoutes: Routes = [
     TodosComponent,
     AboutComponent,
     ContactComponent,
-    HomeComponent
+    HomeComponent,
+    UserListComponent
   ],
   imports: [
     BrowserModule, 
