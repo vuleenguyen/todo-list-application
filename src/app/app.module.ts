@@ -13,6 +13,9 @@ import { AboutComponent } from './core/about/about.component';
 import { ContactComponent } from './core/contact/contact.component';
 import { HomeComponent } from './core/home/home.component';
 import { UserListComponent } from './users/user-list/user-list.component';
+import { HttpModule } from '@angular/http';
+import { UserService } from 'src/app/users/user.service';
+import { DataStorageService } from 'src/app/shared/data-storage.services';
 
 const appRoutes: Routes = [
   {
@@ -51,9 +54,10 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule, 
     FormsModule,
+    HttpModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [],
+  providers: [UserService, DataStorageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
