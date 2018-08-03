@@ -1,0 +1,15 @@
+Angular 4 note:
+
+1. Databinding
+databinding = communication
+- String Interpolation: {{data}}
+- Property Binding: [property]="data"
+	<button class="btn btn-primary" [disabled]="!allowNewServer">Add New Server</button>
+
+- Event Binding: (event) = "expresion" (click) = "createServer()"
+- Two way Binding: [(ngModel)] = "data" to enable ngModel we need to have FormsModule
+<input [(ngModel)]="serverName"> it update serverName directly
+
+2. Directive
+- ngIf: structure Directive
+<p *ngIf="serverCreated">ABC</p>
