@@ -28,7 +28,7 @@
       <div class="toppad" >
         <div class="panel panel-info">
           <div class="panel-heading">
-            <h3 class="panel-title">{{user.firstName + user.lastName}}</h3>
+            <h3 class="panel-title">{{user.userName}}</h3>
           </div>
           <div class="panel-body">
             <div class="row">
@@ -38,34 +38,16 @@
                 <table class="table table-user-information">
                   <tbody>
                     <tr>
-                      <td>Department:</td>
-                      <td>Product Development</td>
+                      <td>First Name: </td>
+                      <td>{{user.firstName}}</td>
                     </tr>
                     <tr>
-                      <td>Hire date:</td>
-                      <td>09/01/2018</td>
-                    </tr>
+                      <td>Last Name: </td>
+                      <td>{{user.lastName}}</td>
+                    </tr>    
                     <tr>
-                      <td>Date of Birth</td>
-                      <td>12/20/1992</td>
-                    </tr>
- 
-                    <tr>
-                      <td>Gender</td>
-                      <td>Male</td>
-                    </tr>
-                      <tr>
-                      <td>Home Address</td>
-                      <td>Richardson,TX</td>
-                    </tr>
-                    <tr>
-                      <td>Email</td>
+                      <td>Email: </td>
                       <td><a href="mailto:info@support.com">{{user.email}}</a></td>
-                    </tr>
-                    <tr>
-                      <td>Phone Number</td>
-                      <td>123-4567-890(Landline)<br><br>(503) 443-8205(Mobile)
-                      </td>     
                     </tr>
                   </tbody>
                 </table>
@@ -75,8 +57,8 @@
                <div class="panel-footer">
                       <div class="action">
                       <span>
-                          <a class="btn btn-sm btn-warning" (click)="onEdit()">Edit</a>
-                          <a class="btn btn-sm btn-danger" (click)="onRemove()">Remove</a>
+                          <a class="btn btn-sm btn-warning" (click)="onEdit()"><i class="fa fa-edit"></i></a>
+                          <a class="btn btn-sm btn-danger" (click)="onRemove()"><i class="fa fa-close"></i></a>
                       </span>
                     </div>
                   </div>

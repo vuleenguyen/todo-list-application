@@ -84,7 +84,8 @@ export class UserEditComponent implements OnInit {
     if (!this.isEdit) {
       this.dataStorageService.insertUser(this.userForm.value).subscribe(
         (response: Response) => {
-          this.zone.run(() => this.router.navigate(['/users/list']));
+          this.dataStorageService.getUsers();
+         this.router.navigate(['/users/list']);
         }, (error) => {
         }
       );
@@ -92,7 +93,8 @@ export class UserEditComponent implements OnInit {
       console.log("update");
       this.dataStorageService.updateUser(this.userForm.value).subscribe(
         (response: Response) => {
-          this.zone.run(() => this.router.navigate(['/users/list']));
+          this.dataStorageService.getUsers();
+          this.router.navigate(['/users/list']);
         }
       );
     }

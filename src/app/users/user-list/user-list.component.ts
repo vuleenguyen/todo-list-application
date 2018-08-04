@@ -24,7 +24,6 @@ export class UserListComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-  
     this.users = this.userService.getUsers();
     if (this.users.length == 0) {
       this.loadUsers();
@@ -40,7 +39,6 @@ export class UserListComponent implements OnInit, OnDestroy {
   loadUsers() {
     this.dataStorageService.getUsers();
   }
-
 
   ngOnDestroy() {
     this.subscription.unsubscribe();

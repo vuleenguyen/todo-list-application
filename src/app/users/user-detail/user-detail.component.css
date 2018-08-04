@@ -128,14 +128,11 @@
     margin-top:20px;
 }
 
-.glyphicon-edit:before {
-    content: "\e065";
-}
 
-.glyphicon-remove:before {
-    content: "\e014";
+.btn-danger {
+    margin-left: 4px;
 }
 
 .action {
-    margin-left: 75%;
+    margin-left: 86%;
 }

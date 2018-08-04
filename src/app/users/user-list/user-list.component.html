@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-sm-5">
     <div class="container">
-      <button id="newUserBtn" class="btn btn-success" (click)="onNewUser()">New User</button>
+      <button id="newUserBtn" class="btn btn-success" (click)="onNewUser()"><i class="fa fa-plus"></i> User</button>
     </div>
     <div class="container">
         <app-user-item *ngFor="let userEl of users; let i = index" [user]="userEl">
