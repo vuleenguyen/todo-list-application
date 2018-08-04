@@ -21,7 +21,9 @@ export class UserDetailComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log("userDetail");
     this.route.params.subscribe(
+      
       (params: Params) => {
         this.id = +params['id'];
         this.dataStorageService.getUser(this.id).subscribe(
@@ -34,6 +36,15 @@ export class UserDetailComponent implements OnInit {
         );
       }
     );
+  }
+
+  onEdit() {
+    let toPlace = '/users/' +  this.id + '/edit';
+    this.router.navigate([toPlace]);
+  }
+
+  onRemove() {
+    this.dataStorageService.removeUser(this.user);
   }
 
 }

@@ -5,6 +5,7 @@ import {Http, Response} from '@angular/http';
 export class UserService {
     usersChanged = new Subject<User[]>();
     private users: User[] = [];
+    
 
     setUsers(users: User[]) {
         this.users = users;
@@ -14,4 +15,5 @@ export class UserService {
     getUsers() {
         return this.users.slice();
     }
+
 }

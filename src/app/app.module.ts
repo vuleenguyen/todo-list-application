@@ -21,7 +21,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { UserDetailComponent } from './users/user-detail/user-detail.component';
 import { DropdownDirective } from './shared/dropdown.directive';
 import { SharedModule } from 'src/app/shared/shared.module';
-
+import { UserEditComponent } from './users/user-edit/user-edit.component';
+import { ReactiveFormsModule } from "@angular/forms";
 
 
 @NgModule({
@@ -38,13 +39,15 @@ import { SharedModule } from 'src/app/shared/shared.module';
     UserListComponent,
     UserItemComponent,
     UserDetailComponent,
+    UserEditComponent,
   ],
   imports: [
     BrowserModule, 
     FormsModule,
     HttpModule,
     AppRoutingModule,
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule
   ],
   providers: [UserService, DataStorageService],
   bootstrap: [AppComponent]

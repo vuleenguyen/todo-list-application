@@ -8,12 +8,20 @@ import { ContactComponent } from "src/app/core/contact/contact.component";
 import { HomeComponent } from "src/app/core/home/home.component";
 import { RouterModule } from "@angular/router";
 import { UserDetailComponent } from "src/app/users/user-detail/user-detail.component";
+import { UserEditComponent } from "src/app/users/user-edit/user-edit.component";
+import { UserListComponent } from "src/app/users/user-list/user-list.component";
 
 
 const appRoutes: Routes = [
     {
       path: 'users', component: UsersComponent, children: [
-          {path: ':id', component: UserDetailComponent}
+          {path: '', redirectTo: '/users/list', pathMatch: 'full'},
+          {path: 'list', component: UserListComponent, children: [
+            {path: ':id', component: UserDetailComponent},
+          ]},
+          {path: 'new', component: UserEditComponent},
+         
+          {path: ':id/edit', component: UserEditComponent},
       ]
     },
     {
@@ -29,7 +37,7 @@ const appRoutes: Routes = [
       path: 'contact', component: ContactComponent
     },
     {
-      path: '', component: HomeComponent
+      path: '', redirectTo: '/tasks', pathMatch: 'full' 
     }
   ];
 

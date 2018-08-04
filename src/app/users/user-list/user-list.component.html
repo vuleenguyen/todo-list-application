@@ -1,8 +1,15 @@
-<div class="container">
-  <button id="newUserBtn" class="btn btn-success" (click)="onNewUser()">New User</button>
-</div>
-<div class="container">
-    <app-user-item *ngFor="let userEl of users; let i = index" [user]="userEl">
-
-    </app-user-item>
+<div class="row">
+  <div class="col-md-5">
+    <div class="container">
+      <button id="newUserBtn" class="btn btn-success" (click)="onNewUser()">New User</button>
+    </div>
+    <div class="container">
+        <app-user-item *ngFor="let userEl of users; let i = index" [user]="userEl">
+        </app-user-item>
+    </div>
+  </div>
+  <div class="col-md-1"></div>
+  <div class="col-md-6">
+      <router-outlet></router-outlet>
+  </div>
 </div>
