@@ -10,6 +10,8 @@ import { RouterModule } from "@angular/router";
 import { UserDetailComponent } from "src/app/users/user-detail/user-detail.component";
 import { UserEditComponent } from "src/app/users/user-edit/user-edit.component";
 import { UserListComponent } from "src/app/users/user-list/user-list.component";
+import { TaskListComponent } from "src/app/tasks/task-list/task-list.component";
+import { TaskEditComponent } from "src/app/tasks/task-edit/task-edit.component";
 
 
 const appRoutes: Routes = [
@@ -25,7 +27,12 @@ const appRoutes: Routes = [
       ]
     },
     {
-      path: 'tasks', component: TasksComponent
+      path: 'tasks', component: TasksComponent, children: [
+        {path: '', redirectTo: '/tasks/list', pathMatch: 'full'},
+        {path: 'list', component: TaskListComponent},
+        {path: 'new', component: TaskEditComponent},
+        {path: ':id/edit', component: TaskEditComponent}
+      ]
     },
     {
       path: 'todos', component: TodosComponent
@@ -37,7 +44,7 @@ const appRoutes: Routes = [
       path: 'contact', component: ContactComponent
     },
     {
-      path: '', redirectTo: '/tasks', pathMatch: 'full' 
+      path: '', component: HomeComponent 
     }
   ];
 

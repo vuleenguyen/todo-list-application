@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TaskService } from 'src/app/tasks/task.service';
 
 @Component({
   selector: 'app-tasks',
@@ -11,5 +12,4 @@ export class TasksComponent implements OnInit {
 
   ngOnInit() {
   }
-
 }

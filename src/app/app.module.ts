@@ -23,6 +23,9 @@ import { DropdownDirective } from './shared/dropdown.directive';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { UserEditComponent } from './users/user-edit/user-edit.component';
 import { ReactiveFormsModule } from "@angular/forms";
+import { TaskListComponent } from './tasks/task-list/task-list.component';
+import { TaskService } from 'src/app/tasks/task.service';
+import { TaskEditComponent } from './tasks/task-edit/task-edit.component';
 
 
 @NgModule({
@@ -40,6 +43,8 @@ import { ReactiveFormsModule } from "@angular/forms";
     UserItemComponent,
     UserDetailComponent,
     UserEditComponent,
+    TaskListComponent,
+    TaskEditComponent,
   ],
   imports: [
     BrowserModule, 
@@ -49,7 +54,7 @@ import { ReactiveFormsModule } from "@angular/forms";
     SharedModule,
     ReactiveFormsModule
   ],
-  providers: [UserService, DataStorageService],
+  providers: [UserService, TaskService, DataStorageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
