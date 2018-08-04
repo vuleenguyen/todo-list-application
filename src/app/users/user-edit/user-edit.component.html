@@ -1,32 +1,33 @@
-<form class="mbr-form" [formGroup]="userForm" (ngSubmit)="onSubmit()">
-  <input type="text"  class="form-control" name="id" formControlName="id" type="hidden" id = "id">
-  <div class="row row-sm-offset">
-      <div class="col-md-6 multi-horizontal" data-for="userName">
-          <div class="form-group">
-              <label class="form-control-label mbr-fonts-style display-7" for="userName">userName</label>
-              <input type="text"  class="form-control" name="userName" formControlName="userName" required="" id = "userName">
-          </div>
-      </div>
-      <div class="col-md-6 multi-horizontal" data-for="email">
-          <div class="form-group">
-              <label class="form-control-label mbr-fonts-style display-7" for="email">Email</label>
-              <input type="email" class="form-control" name="email" formControlName="email" required="" id="email">
-          </div>
-      </div>
-      <div class="col-md-6 multi-horizontal" data-for="firstName">
-          <div class="form-group">
-              <label class="form-control-label mbr-fonts-style display-7" for="firstName">FirstName</label>
-              <input type="text" class="form-control" name="firstName" formControlName="firstName" id="firstName">
-          </div>
-      </div>
-      <div class="col-md-6 multi-horizontal" data-for="lastName">
-        <div class="form-group">
-            <label class="form-control-label mbr-fonts-style display-7" for="lastName">LastName</label>
-            <input type="text" class="form-control" name="lastName" formControlName="lastName" id="lastName">
+
+  <form class="mbr-form" [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <input type="text"  class="form-control" name="id" formControlName="id" type="hidden" id = "id">
+    <div class="row row-sm-offset">
+        <div class="col-md-6 multi-horizontal" data-for="userName">
+            <div class="form-group">
+                <label class="form-control-label mbr-fonts-style display-7" for="userName">userName</label>
+                <input type="text"  class="form-control" name="userName" formControlName="userName" required="" id = "userName">
+            </div>
         </div>
+        <div class="col-md-6 multi-horizontal" data-for="email">
+            <div class="form-group">
+                <label class="form-control-label mbr-fonts-style display-7" for="email">Email</label>
+                <input type="email" class="form-control" name="email" formControlName="email" required="" id="email">
+            </div>
+        </div>
+        <div class="col-md-6 multi-horizontal" data-for="firstName">
+            <div class="form-group">
+                <label class="form-control-label mbr-fonts-style display-7" for="firstName">FirstName</label>
+                <input type="text" class="form-control" name="firstName" formControlName="firstName" id="firstName">
+            </div>
+        </div>
+        <div class="col-md-6 multi-horizontal" data-for="lastName">
+          <div class="form-group">
+              <label class="form-control-label mbr-fonts-style display-7" for="lastName">LastName</label>
+              <input type="text" class="form-control" name="lastName" formControlName="lastName" id="lastName">
+          </div>
+      </div>
     </div>
-  </div>
-  <span class="input-group-btn">
-      <button href="" type="submit" class="btn btn-primary btn-form display-4">{{ !isEdit ? 'Insert' : 'Update'}}</button>
-  </span>
-</form>
+    <span class="input-group-btn">
+        <button href="" type="submit" class="btn btn-primary btn-form display-4">{{ !isEdit ? 'Insert' : 'Update'}}</button>
+    </span>
+  </form>

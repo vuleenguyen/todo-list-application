@@ -1,3 +1,7 @@
 #newUserBtn {
     margin-bottom: 15px;
 }
+
+.user-list {
+    float: left;
+}

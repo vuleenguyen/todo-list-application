@@ -9,6 +9,7 @@ import { error } from '@angular/compiler/src/util';
 import { User } from 'src/app/model/user.model';
 import { Subscription } from 'rxjs';
 import { UserService } from 'src/app/users/user.service';
+import { NgZone } from '@angular/core';
 
 @Component({
   selector: 'app-user-edit',
@@ -22,7 +23,7 @@ export class UserEditComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
     private router: Router, private dataStorageService : DataStorageService
-    , private userService: UserService) { 
+    , private userService: UserService, private zone:NgZone) { 
 }
 
   ngOnInit() {
@@ -83,7 +84,7 @@ export class UserEditComponent implements OnInit {
     if (!this.isEdit) {
       this.dataStorageService.insertUser(this.userForm.value).subscribe(
         (response: Response) => {
-          console.log("Insert succesffully");
+          this.zone.run(() => this.router.navigate(['/users/list']));
         }, (error) => {
         }
       );
@@ -91,7 +92,7 @@ export class UserEditComponent implements OnInit {
       console.log("update");
       this.dataStorageService.updateUser(this.userForm.value).subscribe(
         (response: Response) => {
-          console.log("Update Success");
+          this.zone.run(() => this.router.navigate(['/users/list']));
         }
       );
     }

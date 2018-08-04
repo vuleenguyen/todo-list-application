@@ -34,7 +34,7 @@ export class DataStorageService {
     removeUser(user: User) {
         this.http.delete("http://localhost:8080/users/" + user.id).subscribe(
             (response : Response) => {
-                console.log("remove Success");
+                this.getUsers();
             }
         );
     }
