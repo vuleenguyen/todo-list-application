@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { User } from 'src/app/model/user.model';
 import { UserService } from 'src/app/users/user.service';
 import { Subscription } from 'rxjs/internal/Subscription';
@@ -15,12 +15,13 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./user-list.component.css']
 })
 export class UserListComponent implements OnInit, OnDestroy {
+
+ 
   users: User[] = [];
   subscription: Subscription;
   constructor(private userService: UserService, private dataStorageService: DataStorageService, 
     private router: Router,
     private route: ActivatedRoute) {
-  
   }
 
   ngOnInit() {

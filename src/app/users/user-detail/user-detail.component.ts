@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { User } from 'src/app/model/user.model';
 import { UserService } from 'src/app/users/user.service';
 import { ActivatedRoute } from '@angular/router';
@@ -15,6 +15,9 @@ export class UserDetailComponent implements OnInit {
   user: User;
   id: number;
   isDataAvailable: boolean = false;
+
+  @ViewChild('userDetail', {read: ViewContainerRef}) userDetail: ViewContainerRef;
+
   constructor(private userService: UserService, private route: ActivatedRoute
       ,private router: Router, private dataStorageService: DataStorageService) { 
         console.log("constructor");
@@ -44,7 +47,11 @@ export class UserDetailComponent implements OnInit {
   }
 
   onRemove() {
-    this.dataStorageService.removeUser(this.user);
+    this.dataStorageService.removeUser(this.user).subscribe(
+      (response : Response) => {
+          this.dataStorageService.getUsers();
+          this.router.navigate(['/users/list']);
+      }
+    );
   }
-
 }

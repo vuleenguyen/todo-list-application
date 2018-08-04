@@ -2,6 +2,7 @@ import {Http, Response} from '@angular/http';
 import { User } from 'src/app/model/user.model';
 import { UserService } from 'src/app/users/user.service';
 import { Injectable } from '@angular/core';
+import { EventEmitter } from '@angular/core';
 
 @Injectable()
 export class DataStorageService {
@@ -32,10 +33,6 @@ export class DataStorageService {
     }
 
     removeUser(user: User) {
-        this.http.delete("http://localhost:8080/users/" + user.id).subscribe(
-            (response : Response) => {
-                this.getUsers();
-            }
-        );
+        return this.http.delete("http://localhost:8080/users/" + user.id);
     }
 }
