@@ -1,7 +1,8 @@
 <div *ngIf="isDataAvailable"> 
   <form class="block mbr-form" id="taskForm" [formGroup]="taskForm" (ngSubmit)="onSubmit()">
     <div class="row"> 
-      <div class="form-group col-sm-6">
+        <input type="text"  class="form-control" name="id" formControlName="id" type="hidden" id = "id">
+        <div class="form-group col-sm-6">
           <label for="name">Name:</label>
           <input type="text" class="form-control" id="name" formControlName="name">
         </div>
@@ -14,8 +15,8 @@
           </select>
         </div>
         <div class="form-group col-sm-6">
-            <label for="assignedUser">Assigned To</label>
-            <select name="assignedUser" formControlName="assignedUser" class="form-control">
+            <label for="assignedUserName">Assigned To</label>
+            <select name="assignedUserName" formControlName="assignedUserName" class="form-control">
               <option *ngFor="let user of users" [ngValue]="user.userName">
                   {{user.userName}}
               </option>

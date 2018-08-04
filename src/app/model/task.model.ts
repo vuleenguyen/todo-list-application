@@ -6,7 +6,8 @@ export class Task {
     description: string;
     status: string;
     assignedUserId: number;
-    assignedUser: string;
+    assignedUserName: string;
+    assignedUser: User;
 
     public static TaskStatus: any = [
         {id: 1, name: "notstarted"},

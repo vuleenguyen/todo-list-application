@@ -43,9 +43,33 @@ export class TaskEditComponent implements OnInit {
     this.statuses = Task.TaskStatus;
     let name = '';
     let description = '';
-    let assignedUser = '';
+    let assignedUserName = '';
+    let status = '';
+    
     if (this.isEditMode) {
-      
+      this.dataStorageService.getTask(this.id).subscribe(
+        (response: Response) => {
+          const task: Task = response.json();
+          name = task.name;
+          description = task.description;
+          assignedUserName = task.assignedUser.userName;
+          status = task.status;
+          this.dataStorageService.getUsersFromTask().subscribe(
+            (response: Response) => {
+              const users: User[] = response.json();
+              this.users = users;
+              this.taskForm = new FormGroup({
+                'id' : new FormControl(this.id),
+                'name': new FormControl(name, Validators.required),
+                'assignedUserName': new FormControl(assignedUserName),
+                'description': new FormControl(description, Validators.required),
+                'status': new FormControl(status)
+              });
+              this.isDataAvailable = true;
+            }
+          );
+        }
+      )
 
     } else {
       this.dataStorageService.getUsersFromTask().subscribe(
@@ -53,8 +77,9 @@ export class TaskEditComponent implements OnInit {
           const users: User[] = response.json();
           this.users = users;
           this.taskForm = new FormGroup({
+            'id' : new FormControl(this.id),
             'name': new FormControl(name, Validators.required),
-            'assignedUser': new FormControl(this.users[0].userName),
+            'assignedUserName': new FormControl(null),
             'description': new FormControl(description, Validators.required),
             'status': new FormControl("inprogress")
           });
@@ -67,17 +92,23 @@ export class TaskEditComponent implements OnInit {
   }
 
   onSubmit() {
+    const task: Task = this.taskForm.value;
+    const id = this.getId(task.assignedUserName);
+    task.assignedUserId = id;
     if (!this.isEditMode) {
-      const task: Task = this.taskForm.value;
-      const id = this.getId(task.assignedUser);
-      task.assignedUserId = id;
-      console.log(task);
       this.dataStorageService.insertTask(task).subscribe(
         (response: Response) => {
           this.dataStorageService.getTasks();
           this.router.navigate(['tasks/list']);
         }
       );
+    } else {
+      this.dataStorageService.updateTask(task).subscribe(
+        (response: Response) => {
+          this.dataStorageService.getTasks();
+          this.router.navigate(['tasks/list']);
+        }
+      )
     }
   }
 
