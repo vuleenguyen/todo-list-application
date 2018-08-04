@@ -20,6 +20,8 @@ import { UserItemComponent } from './users/user-list/user-item/user-item.compone
 import { AppRoutingModule } from './app-routing.module';
 import { UserDetailComponent } from './users/user-detail/user-detail.component';
 import { DropdownDirective } from './shared/dropdown.directive';
+import { SharedModule } from 'src/app/shared/shared.module';
+
 
 
 @NgModule({
@@ -35,13 +37,14 @@ import { DropdownDirective } from './shared/dropdown.directive';
     HomeComponent,
     UserListComponent,
     UserItemComponent,
-    UserDetailComponent
+    UserDetailComponent,
   ],
   imports: [
     BrowserModule, 
     FormsModule,
     HttpModule,
-    AppRoutingModule
+    AppRoutingModule,
+    SharedModule
   ],
   providers: [UserService, DataStorageService],
   bootstrap: [AppComponent]

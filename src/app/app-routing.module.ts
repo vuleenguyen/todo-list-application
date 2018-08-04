@@ -9,6 +9,7 @@ import { HomeComponent } from "src/app/core/home/home.component";
 import { RouterModule } from "@angular/router";
 import { UserDetailComponent } from "src/app/users/user-detail/user-detail.component";
 
+
 const appRoutes: Routes = [
     {
       path: 'users', component: UsersComponent, children: [

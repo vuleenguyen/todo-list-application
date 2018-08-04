@@ -1,5 +1,6 @@
 import { User } from "src/app/model/user.model";
 import { Subject } from "rxjs/internal/Subject";
+import {Http, Response} from '@angular/http';
 
 export class UserService {
     usersChanged = new Subject<User[]>();
@@ -12,12 +13,5 @@ export class UserService {
 
     getUsers() {
         return this.users.slice();
-    }
-
-    getUser(id: number) {
-        for(let i = 0; i < this.users.length; i++) {
-            if (this.users[i].id == id) return this.users[i];
-        }
-        return null;
     }
 }

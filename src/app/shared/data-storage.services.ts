@@ -18,4 +18,8 @@ export class DataStorageService {
                 }
             );
     }
+
+    getUser(id: number) {
+        return this.http.get("http://localhost:8080/users/" + id);
+    }
 }

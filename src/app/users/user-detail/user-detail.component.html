@@ -1,28 +1,22 @@
-<div class="row">
-    <div class="col-xs-12">
-      <img src="../../../../assets/images/avatar.png" alt="{{user.userName}}" class="img-responsive" height="300" width="300">
-    </div>
-  </div>
+<div *ngIf="isDataAvailable"> 
   <div class="row">
-    <div class="col-xs-12">
-        <h1>{{user.FirstName}}</h1>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-xs-12">
-      <div appDropdown [defaultClass]="'btn-group'">
-        <button type="button" class="btn btn-primary dropdown-toggle">Action
-          <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu">
-         <li><a appItemdecorate style="cursor:pointer" (click)="onEditRecipe()">Edit User</a></li>
-          <li><a appItemdecorate style="cursor:pointer" (click)="onDeleteRecipe()">Delete User</a></li>
-        </ul>
+      <div class="col-xs-12">
+        <img src="../../../../assets/images/avatar.png" alt="{{user.userName}}" class="img-responsive" height="300" width="300">
       </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-xs-12">
-      {{user.email}}
+    <div class="row">
+      <div class="col-xs-12">
+          <h1>{{user.firstName}}</h1>
+      </div>
     </div>
-  </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <h1>{{user.lastName}}</h1>
+        </div>
+      </div>
+    <div class="row">
+      <div class="col-xs-12">
+        {{user.email}}
+      </div>
+    </div>
+</div>

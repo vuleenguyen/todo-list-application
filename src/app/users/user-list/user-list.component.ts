@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/model/user.model';
 import { UserService } from 'src/app/users/user.service';
 import { Subscription } from 'rxjs/internal/Subscription';
-import { OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
+import { OnDestroy, OnChanges } from '@angular/core/src/metadata/lifecycle_hooks';
+import { Router , NavigationStart} from '@angular/router';
+import { DataStorageService } from 'src/app/shared/data-storage.services';
 
 
 
@@ -14,16 +16,28 @@ import { OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
 export class UserListComponent implements OnInit, OnDestroy {
   users: User[] = [];
   subscription: Subscription;
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService, private dataStorageService: DataStorageService) {
+  
+  }
 
   ngOnInit() {
+  
     this.users = this.userService.getUsers();
+    if (this.users.length == 0) {
+      this.loadUsers();
+    }
     this.subscription = this.userService.usersChanged.subscribe(
       (users: User[]) => {
         this.users = users;
+        console.log("saklklkla");
       }
     )
   }
+
+  loadUsers() {
+    this.dataStorageService.getUsers();
+  }
+
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
