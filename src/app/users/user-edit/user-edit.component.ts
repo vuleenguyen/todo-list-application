@@ -32,7 +32,6 @@ export class UserEditComponent implements OnInit {
       (params : Params) => {
         this.id = +params['id'];
         this.isEdit = params['id'] !== undefined;
-        //if (this.isEdit) this.dataStorageService.getUserByID(this.id);
         this.initForm();
       }
     );
@@ -56,7 +55,7 @@ export class UserEditComponent implements OnInit {
           firstName = user.firstName;
           lastName = user.lastName;
           this.userForm = new FormGroup({
-            'id' : new FormControl(id, Validators.required),
+            'id' : new FormControl(id),
             'userName' : new FormControl(userName, Validators.required),
             'email' : new FormControl(email, Validators.required),
             'firstName' : new FormControl(firstName, Validators.required),
@@ -67,7 +66,7 @@ export class UserEditComponent implements OnInit {
 
     } else {
       this.userForm = new FormGroup({
-        'id' : new FormControl(id, Validators.required),
+        'id' : new FormControl(id),
         'userName' : new FormControl(userName, Validators.required),
         'email' : new FormControl(email, Validators.required),
         'firstName' : new FormControl(firstName, Validators.required),
