@@ -20,12 +20,6 @@ export class TaskListComponent implements OnInit {
   selectedUserObj: User;
   selectedStatus = null;
 
-    // userName: string;
-    // firstName: string;
-    // lastName: string;
-    // email: string;
-    // id: number;
-
   users: User[] = [];
   statuses: any;
 
@@ -51,17 +45,25 @@ export class TaskListComponent implements OnInit {
           this.users = users;
         }
     );
+
+    
   }
 
   initData() {
     this.statuses = Task.TaskStatus;
     let isExitNotCompleteStatus = false;
-    for(let status of this.statuses) {
-      if (status.name === "notcompleted") break;
+    for(let i = 0; i < this.statuses.length; i++) {
+      if (this.statuses[i].name === "notcompleted") {
+        isExitNotCompleteStatus = true;
+        break;
+      }
     }
+    console.log("initdata");
     if (!isExitNotCompleteStatus) {
       this.statuses.push({id: 4, name: "notcompleted"});
-    }
+    }    
+
+    this.selectedStatus = {id: 0, name: "--Status--"};
   }
 
   loadTasks() {

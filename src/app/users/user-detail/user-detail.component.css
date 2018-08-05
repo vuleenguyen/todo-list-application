@@ -29,6 +29,7 @@
     margin-bottom: 0;
     font-size: 16px;
     color: inherit;
+    font-weight: 600;
 }
 
 .panel-body {
@@ -130,4 +131,15 @@
 
 .btn-danger {
     margin-left: 4px;
+}
+
+#email {
+    color: #2196f3;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+a[id="email"]:hover{
+    color: #2055A8 !important;
+    text-decoration: none;
 }

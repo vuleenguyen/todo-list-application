@@ -3,9 +3,22 @@
     width: inherit;
 }
 
+#statusFilter {
+    float: right;
+    margin-bottom: 10px;
+}
+
+#userFilter {
+    float: right;
+}
+
+#statusFilter>label, #userFilter>label {
+    margin: 0px;
+}
+
 select {
     float: right;
-    width: 15%;
+    
 }
 
 select.right {
