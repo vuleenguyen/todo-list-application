@@ -62,8 +62,6 @@ export class TaskListComponent implements OnInit {
     if (!isExitNotCompleteStatus) {
       this.statuses.push({id: 4, name: "notcompleted"});
     }    
-
-    this.selectedStatus = {id: 0, name: "--Status--"};
   }
 
   loadTasks() {
