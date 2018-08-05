@@ -26,6 +26,7 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { TaskListComponent } from './tasks/task-list/task-list.component';
 import { TaskService } from 'src/app/tasks/task.service';
 import { TaskEditComponent } from './tasks/task-edit/task-edit.component';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 
 @NgModule({
@@ -52,7 +53,8 @@ import { TaskEditComponent } from './tasks/task-edit/task-edit.component';
     HttpModule,
     AppRoutingModule,
     SharedModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    InfiniteScrollModule
   ],
   providers: [UserService, TaskService, DataStorageService],
   bootstrap: [AppComponent]

@@ -6,6 +6,7 @@ import { OnDestroy, OnChanges } from '@angular/core/src/metadata/lifecycle_hooks
 import { Router , NavigationStart} from '@angular/router';
 import { DataStorageService } from 'src/app/shared/data-storage.services';
 import { ActivatedRoute } from '@angular/router';
+import {Http, Response} from '@angular/http';
 
 
 
@@ -16,7 +17,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class UserListComponent implements OnInit, OnDestroy {
 
- 
+  
   users: User[] = [];
   subscription: Subscription;
   constructor(private userService: UserService, private dataStorageService: DataStorageService, 
@@ -24,6 +25,9 @@ export class UserListComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute) {
   }
 
+  infiniteScroll: any;
+
+  pageNumber = 0;
   ngOnInit() {
     this.users = this.userService.getUsers();
     if (this.users.length == 0) {
@@ -32,12 +36,13 @@ export class UserListComponent implements OnInit, OnDestroy {
     this.subscription = this.userService.usersChanged.subscribe(
       (users: User[]) => {
         this.users = users;
-        console.log("saklklkla");
+        this.pageNumber++;
       }
     )
   }
 
   loadUsers() {
+    // this.dataStorageService.getUsersWithPagingInit(this.pageNumber);
     this.dataStorageService.getUsers();
   }
 
@@ -50,4 +55,15 @@ export class UserListComponent implements OnInit, OnDestroy {
     this.router.navigate(['/users/new']);
   }
 
+  loadMore(event) {
+    console.log('scrolled!!' + event);
+    // this.dataStorageService.getUsersWithPaging(this.pageNumber).subscribe(
+    //   (response: Response) => {
+    //     const users: User[] = response.json();
+    //     for(let i = 0; i < users.length; i++) this.users.push(users[i]);
+    //     this.pageNumber++;
+    //   }
+    // );
+    // console.log(this.infiniteScroll);
+  }
 }

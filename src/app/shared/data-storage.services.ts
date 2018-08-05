@@ -93,4 +93,20 @@ export class DataStorageService {
             }
         );
     }
+
+    getUsersWithPaging(page: number) {
+        return this.http.get("http://localhost:8080/users/page?page=" + page);
+    }
+
+    getUsersWithPagingInit(page: number) {
+        this.http.get("http://localhost:8080/users/page?page=" + page)
+            .subscribe(
+                (response: Response) => {
+                    
+                    const users: User[] = response.json();
+                    console.log(users);
+                    this.userService.setUsers(users);
+                }
+            );
+    }
 }

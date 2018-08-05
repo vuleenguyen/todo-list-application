@@ -5,3 +5,8 @@
 .user-list {
     float: left;
 }
+
+.search-results {
+    height: 385px;
+    overflow-y: auto;
+}
