@@ -31,8 +31,7 @@ export class TaskListComponent implements OnInit {
 
   ngOnInit() {
     this.tasks = this.taskService.getTasks();
-    this.statuses = Task.TaskStatus;
-    this.statuses.push({id: 4, name: "notcompleted"})
+    this.initData();
     if (this.tasks.length == 0) {
       this.loadTasks();
     }
@@ -52,6 +51,17 @@ export class TaskListComponent implements OnInit {
           this.users = users;
         }
     );
+  }
+
+  initData() {
+    this.statuses = Task.TaskStatus;
+    let isExitNotCompleteStatus = false;
+    for(let status of this.statuses) {
+      if (status.name === "notcompleted") break;
+    }
+    if (!isExitNotCompleteStatus) {
+      this.statuses.push({id: 4, name: "notcompleted"});
+    }
   }
 
   loadTasks() {
