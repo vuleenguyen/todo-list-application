@@ -86,9 +86,7 @@ export class TaskEditComponent implements OnInit {
           this.isDataAvailable = true;
         }
       );
-      
     }
-
   }
 
   onSubmit() {

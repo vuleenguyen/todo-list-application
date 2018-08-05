@@ -1,13 +1,20 @@
+<div class="action">
 <button class="btn btn-primary" (click)="onNewTask()">Create Task</button>
-<div>
-<select class="form-control">
-    <option></option>
+
+
+<select class="form-control" [ngModel]="selectedStatus" (ngModelChange)="onChangeStatus($event)">
+    <option *ngFor="let status of statuses" [ngValue]="status">
+        {{status.name}}
+    </option>
 </select>
-<select class="form-control">
-    <option></option>
+
+<select class="form-control right" [ngModel]="selectedUserObj" (ngModelChange)="onChangeUser($event)">
+    <option *ngFor="let user of users" [ngValue]="user">
+        {{user.userName}}
+    </option>
 </select>
 </div>
-<hr>
+
 <table class="table table-striped">
     <thead>
         <tr>

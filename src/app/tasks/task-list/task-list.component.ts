@@ -4,6 +4,8 @@ import { TagContentType } from '@angular/compiler';
 import { Task } from 'src/app/model/task.model';
 import { DataStorageService } from 'src/app/shared/data-storage.services';
 import { Router } from '@angular/router';
+import { UserService } from 'src/app/users/user.service';
+import { User } from 'src/app/model/user.model';
 
 @Component({
   selector: 'app-task-list',
@@ -13,22 +15,51 @@ import { Router } from '@angular/router';
 export class TaskListComponent implements OnInit {
   tasks: Task[] = [];
   constructor(private taskService: TaskService, private dataStorageService: DataStorageService,
-    private router : Router) { }
+    private router : Router, private userService : UserService) { }
+  
+  selectedUserObj: User;
+  selectedStatus = null;
+
+    // userName: string;
+    // firstName: string;
+    // lastName: string;
+    // email: string;
+    // id: number;
+
+  users: User[] = [];
+  statuses: any;
 
   ngOnInit() {
     this.tasks = this.taskService.getTasks();
+    this.statuses = Task.TaskStatus;
+    this.statuses.push({id: 4, name: "notcompleted"})
     if (this.tasks.length == 0) {
       this.loadTasks();
     }
+
+    if (this.users.length == 0) {
+      this.loadUsers();
+    }
+
     this.taskService.taskChanged.subscribe(
         (tasks: Task[])=> {
           this.tasks = tasks;
         }
     ); 
+
+    this.userService.usersChanged.subscribe(
+        (users: User[]) => {
+          this.users = users;
+        }
+    );
   }
 
   loadTasks() {
     this.dataStorageService.getTasks();
+  }
+
+  loadUsers() {
+    this.dataStorageService.getUsers();
   }
 
   onNewTask() {
@@ -39,5 +70,24 @@ export class TaskListComponent implements OnInit {
 
   onEdit(event, item) {
     this.router.navigate(['/tasks/' + item.id + '/edit']);
+  }
+
+  onChangeUser(newUser: User) {
+    this.selectedUserObj = newUser;
+    if (this.selectedStatus === null) {
+      this.dataStorageService.getTasksByUser(this.selectedUserObj);
+    } else {
+      this.dataStorageService.getTasksByUserAndStatus(this.selectedUserObj, this.selectedStatus.name);
+    }
+  }
+
+  onChangeStatus(status: any) {
+    this.selectedStatus = status;
+    if (this.selectedUserObj === null) {
+      this.dataStorageService.getTasksByStatus(this.selectedStatus.name);
+    } else {
+      this.dataStorageService.getTasksByUserAndStatus(this.selectedUserObj, this.selectedStatus.name);
+    }
+    
   }
 }

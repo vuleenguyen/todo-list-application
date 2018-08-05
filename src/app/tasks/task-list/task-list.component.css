@@ -1,0 +1,13 @@
+.action {
+    margin-bottom: 10px;
+    width: inherit;
+}
+
+select {
+    float: right;
+    width: 15%;
+}
+
+select.right {
+    margin-right: 10px;
+}

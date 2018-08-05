@@ -63,4 +63,34 @@ export class DataStorageService {
     getTask(id: number) {
         return this.http.get("http://localhost:8080/tasks/update/" + id);
     }
+
+    getTasksByStatus(status: string) {
+        this.http.get("http://localhost:8080/tasks/" + status)
+        .subscribe(
+            (response: Response) => {
+                const tasks: Task[] = response.json();
+                this.taskService.setTasks(tasks);
+            }
+        );
+    }
+
+    getTasksByUser(user: User) {
+        this.http.get("http://localhost:8080/tasks/users/" + user.id)
+        .subscribe(
+            (response: Response) => {
+                const tasks: Task[] = response.json();
+                this.taskService.setTasks(tasks);
+            }
+        );
+    }
+
+    getTasksByUserAndStatus(user: User, status: string) {
+        this.http.get("http://localhost:8080/tasks/user?userId=" + user.id + "&status=" + status)
+        .subscribe(
+            (response: Response) => {
+                const tasks: Task[] = response.json();
+                this.taskService.setTasks(tasks);
+            }
+        );
+    }
 }
