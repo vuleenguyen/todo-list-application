@@ -13,6 +13,7 @@
 <div id="userFilter">
     <label for="status">User</label>
     <select class="form-control right" [ngModel]="selectedUserObj" (ngModelChange)="onChangeUser($event)">
+        <option [ngValue]="emptyUser" selected="selected">All Users</option>
         <option *ngFor="let user of users" [ngValue]="user">
             {{user.userName}}
         </option>

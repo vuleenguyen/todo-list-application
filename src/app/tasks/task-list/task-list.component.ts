@@ -20,6 +20,7 @@ export class TaskListComponent implements OnInit {
   selectedUserObj: User;
   selectedStatus = null;
 
+  emptyUser: User;
   users: User[] = [];
   statuses: any;
 
@@ -84,8 +85,9 @@ export class TaskListComponent implements OnInit {
 
   onChangeUser(newUser: User) {
     this.selectedUserObj = newUser;
-    if (this.selectedStatus === null) {
-      this.dataStorageService.getTasksByUser(this.selectedUserObj);
+    if (this.selectedStatus === null || this.selectedStatus === undefined) {
+      if (this.selectedUserObj === undefined) this.dataStorageService.getTasks();
+      else this.dataStorageService.getTasksByUser(this.selectedUserObj);
     } else {
       this.dataStorageService.getTasksByUserAndStatus(this.selectedUserObj, this.selectedStatus.name);
     }
@@ -93,7 +95,7 @@ export class TaskListComponent implements OnInit {
 
   onChangeStatus(status: any) {
     this.selectedStatus = status;
-    if (this.selectedUserObj === null) {
+    if (this.selectedUserObj === null || this.selectedUserObj === undefined) {
       this.dataStorageService.getTasksByStatus(this.selectedStatus.name);
     } else {
       this.dataStorageService.getTasksByUserAndStatus(this.selectedUserObj, this.selectedStatus.name);
