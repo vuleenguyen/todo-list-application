@@ -1,0 +1,27 @@
+<div class="example-container">
+    <form id="todoForm" [formGroup]="todoForm">
+      <mat-form-field>
+        <input matInput placeholder="Name" formControlName="name">
+      </mat-form-field>
+      <button mat-flat-button (click)="addTasks()">Add Tasks</button>
+      <div class="row">
+        <div class="col-xs-12" formArrayName="tasksList"
+          *ngFor="let task of formGroup.get('tasksList').controls"
+        >
+            <mat-form-field>
+                <input matInput placeholder="Name" formControlName="taskName">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="Description" formControlName="description">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="Status" formControlName="status">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="Assigned User" formControlName="assignedUser">
+            </mat-form-field>
+        </div>
+      </div>
+      <button mat-flat-button>Save</button>
+    </form>
+  </div>

@@ -2,5 +2,5 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 body {
-    font-family: -webkit-body;
+    font-family: 'PT Sans', sans-serif;
 }

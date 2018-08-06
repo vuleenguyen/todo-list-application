@@ -28,13 +28,14 @@ import { TaskService } from 'src/app/tasks/task.service';
 import { TaskEditComponent } from './tasks/task-edit/task-edit.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatButtonModule, MatCheckboxModule, MatFormField,MatTableModule, MatPaginatorModule} from '@angular/material';
+import {MatButtonModule, MatCheckboxModule, MatFormField,MatTableModule, MatPaginatorModule, MatIconModule, MatSelectModule} from '@angular/material';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material';
 import { TodoListComponent } from './todos/todo-list/todo-list.component';
 import { TodoTaskListComponent } from './todos/todo-task-list/todo-task-list.component';
-import { TempComponent } from './todos/temp/temp.component';
 import { TodoService } from 'src/app/todos/todo.service';
+import { TodoEditComponent } from './todos/todo-edit/todo-edit.component';
+import { TodoMainComponent } from './todos/todo-main/todo-main.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,7 +55,8 @@ import { TodoService } from 'src/app/todos/todo.service';
     TaskEditComponent,
     TodoListComponent,
     TodoTaskListComponent,
-    TempComponent,
+    TodoEditComponent,
+    TodoMainComponent,
   ],
   imports: [
     BrowserModule, 
@@ -70,7 +72,9 @@ import { TodoService } from 'src/app/todos/todo.service';
     MatFormFieldModule,
     MatTableModule,
     MatPaginatorModule,
-    MatInputModule
+    MatInputModule,
+    MatIconModule,
+    MatSelectModule
   ],
   providers: [UserService, TaskService, TodoService, DataStorageService],
   bootstrap: [AppComponent]

@@ -12,6 +12,8 @@ import { UserEditComponent } from "src/app/users/user-edit/user-edit.component";
 import { UserListComponent } from "src/app/users/user-list/user-list.component";
 import { TaskListComponent } from "src/app/tasks/task-list/task-list.component";
 import { TaskEditComponent } from "src/app/tasks/task-edit/task-edit.component";
+import { TodoMainComponent } from "src/app/todos/todo-main/todo-main.component";
+import { TodoEditComponent } from "src/app/todos/todo-edit/todo-edit.component";
 
 
 const appRoutes: Routes = [
@@ -35,7 +37,11 @@ const appRoutes: Routes = [
       ]
     },
     {
-      path: 'todos', component: TodosComponent
+      path: 'todos', component: TodosComponent, children: [
+        {path: '', redirectTo: '/todos/list', pathMatch: 'full'},
+        {path: 'list', component: TodoMainComponent},
+        {path: 'new', component: TodoEditComponent}
+      ]
     }, 
     {
       path: 'about', component: AboutComponent  

@@ -1,5 +1,9 @@
 <div class="action">
-<button class="btn btn-primary" (click)="onNewTask()">Create Task</button>
+<!-- <button class="btn btn-primary" (click)="onNewTask()">Create</button> -->
+
+<button mat-flat-button (click)="onNewTask()">
+        <mat-icon>add</mat-icon>
+        Add</button>
 
 <div id="statusFilter">
     <label for="status">Status</label>
@@ -37,7 +41,7 @@
           <td>{{task.description}}</td>
           <td>{{task.status}}</td>
           <td>{{task.assignedUser.userName}}</td>
-          <td><a class="btn btn-sm btn-warning" (click)="onEdit($event, task)"><i class="fa fa-edit"></i></a></td>
+          <td><a class="btn btn-sm btn-warning" (click)="onEdit($event, task)"><mat-icon>edit</mat-icon></a></td>
         </tr>
     </tbody>
 </table>

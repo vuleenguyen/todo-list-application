@@ -1,36 +1,44 @@
-import {Component, ViewChild} from '@angular/core';
+import {Component, ViewChild, OnInit} from '@angular/core';
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
+import { TodoService } from 'src/app/todos/todo.service';
+import { Task } from 'src/app/model/task.model';
 
 @Component({
   selector: 'app-todo-task-list',
   templateUrl: './todo-task-list.component.html',
   styleUrls: ['./todo-task-list.component.css']
 })
-export class TodoTaskListComponent {
+export class TodoTaskListComponent implements OnInit  {
+  
 
-  displayedColumns = ['id', 'name', 'progress', 'color'];
-  dataSource: MatTableDataSource<UserData>;
+  displayedColumns = ['id', 'Name', 'Description', 'Status', 'Assigned User'];
+  dataSource: MatTableDataSource<Task>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
+  tasks: Task[] = [];
 
-
-  constructor() {
-    // Create 100 users
-    const users: UserData[] = [];
-    for (let i = 1; i <= 100; i++) { users.push(createNewUser(i)); }
-
+  constructor(private todoService: TodoService) {
+  
     // Assign the data to the data source for the table to render
-    this.dataSource = new MatTableDataSource(users);
   }
 
-  /**
-   * Set the paginator and sort after the view init since this component will
-   * be able to query its view for the initialized paginator and sort.
-   */
+  ngOnInit(): void {
+
+
+    this.todoService.taskChanged.subscribe(
+      (tasks: Task[]) => {
+        this.tasks = tasks
+        this.dataSource = new MatTableDataSource(this.tasks);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+      }
+    )
+  }
+
+  
   ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+    
   }
 
   applyFilter(filterValue: string) {
@@ -39,24 +47,8 @@ export class TodoTaskListComponent {
     this.dataSource.filter = filterValue;
   }
 
-  abc() {
-    console.log("jdsajkd");
-  }
 }
 
-/** Builds and returns a new User. */
-function createNewUser(id: number): UserData {
-  const name =
-      NAMES[Math.round(Math.random() * (NAMES.length - 1))] + ' ' +
-      NAMES[Math.round(Math.random() * (NAMES.length - 1))].charAt(0) + '.';
-
-  return {
-    id: id.toString(),
-    name: name,
-    progress: Math.round(Math.random() * 100).toString(),
-    color: COLORS[Math.round(Math.random() * (COLORS.length - 1))]
-  };
-}
 
 /** Constants used to fill up our data base. */
 const COLORS = ['maroon', 'red', 'orange', 'yellow', 'olive', 'green', 'purple',
@@ -65,9 +57,4 @@ const NAMES = ['Maia', 'Asher', 'Olivia', 'Atticus', 'Amelia', 'Jack',
   'Charlotte', 'Theodore', 'Isla', 'Oliver', 'Isabella', 'Jasper',
   'Cora', 'Levi', 'Violet', 'Arthur', 'Mia', 'Thomas', 'Elizabeth'];
 
-export interface UserData {
-  id: string;
-  name: string;
-  progress: string;
-  color: string;
-}
+

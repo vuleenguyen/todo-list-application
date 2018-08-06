@@ -1,3 +1,7 @@
+<button mat-flat-button (click)="onNewTodo()">
+  <mat-icon>add</mat-icon>
+  Add</button>
+
 <div class="example-container mat-elevation-z8">
 
   <mat-table [dataSource]="dataSource" matSort>
@@ -15,7 +19,7 @@
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="abc()">
+    <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="showTasksWithSelectedRow(row)">
     </mat-row>
   </mat-table>
 
