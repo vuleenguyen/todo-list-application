@@ -21,4 +21,8 @@ export class SidebarComponent implements OnInit {
     this.dataStorageService.getUsers();
     this.dataStorageService.getTasks();
   }
+
+  onFetchTodo() {
+    this.dataStorageService.getTodos();
+  }
 }
