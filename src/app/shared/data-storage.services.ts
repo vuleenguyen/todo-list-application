@@ -5,10 +5,14 @@ import { Injectable } from '@angular/core';
 import { EventEmitter } from '@angular/core';
 import { Task } from 'src/app/model/task.model';
 import { TaskService } from 'src/app/tasks/task.service';
+import { Todo } from 'src/app/model/todo.model';
+import { TodoService } from 'src/app/todos/todo.service';
 
 @Injectable()
 export class DataStorageService {
-    constructor(private http: Http, private userService: UserService, private taskService: TaskService){}
+    constructor(private http: Http, private userService: UserService, 
+        private taskService: TaskService,
+        private todoService: TodoService){}
 
     getUsers() {
         this.http.get("http://localhost:8080/users")
@@ -108,5 +112,16 @@ export class DataStorageService {
                     this.userService.setUsers(users);
                 }
             );
+    }
+
+    getTodos() {
+        console.log("totdo");
+        this.http.get("http://localhost:8080/todolists")
+        .subscribe(
+            (response: Response) => {
+                const todos: Todo[] = response.json();
+                this.todoService.setTodos(todos);
+            }
+        );
     }
 }

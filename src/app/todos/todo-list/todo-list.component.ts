@@ -10,7 +10,7 @@ import { TodoService } from 'src/app/todos/todo.service';
 })
 export class TodoListComponent {
 
-  displayedColumns = ['id', 'name', 'progress', 'color'];
+  displayedColumns = ['id', 'name'];
   dataSource: MatTableDataSource<Todo>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -24,13 +24,14 @@ export class TodoListComponent {
       (todos: Todo[]) => {
         this.todos = todos; 
         this.dataSource = new MatTableDataSource(todos);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
       }
     );
   }
 
   ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+    
   }
 
 }
