@@ -1,6 +1,11 @@
-<button mat-flat-button (click)="onNewTodo()">
-  <mat-icon>add</mat-icon>
-  Add</button>
+<!-- <button mat-flat-button (click)="onNewTodo()"> -->
+  
+<button mat-flat-button [matMenuTriggerFor]="menu">Action</button>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item (click)="onNewTodo()"><mat-icon>add</mat-icon> Add</button>
+  <button mat-menu-item (click)="onDeleteTodo()" [disabled]="isRowSelected"><mat-icon>remove</mat-icon> Remove</button>
+</mat-menu>
+  
 
 <div class="example-container mat-elevation-z8">
 

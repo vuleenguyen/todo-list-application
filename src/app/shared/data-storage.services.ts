@@ -131,4 +131,8 @@ export class DataStorageService {
     insertToDoList(todoList: TodoList) {
         return this.http.post("http://localhost:8080/todolists", todoList);
     }
+
+    deleteTodoList(id: number) {
+        return this.http.delete("http://localhost:8080/todolists/" + id);
+    }
 }
