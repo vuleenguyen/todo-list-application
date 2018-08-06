@@ -1,3 +1,64 @@
-<p>
-  todo-task-edit works!
-</p>
+<div class="example-container mat-elevation-z8">
+	<mat-table #table [dataSource]="dataSource">
+
+		<!-- Name Column -->
+		<ng-container matColumnDef="name">
+			<mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+			<mat-cell *matCellDef="let task">
+				<mat-form-field floatLabel="never">
+					<input matInput placeholder="Name" [value]="task.name" [(ngModel)]="task.name">
+				</mat-form-field>
+			</mat-cell>
+		</ng-container>
+
+		<!-- Weight Column -->
+		<ng-container matColumnDef="description">
+			<mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
+			<mat-cell *matCellDef="let task">
+				<mat-form-field floatLabel="never">
+					<input matInput placeholder="Description" [value]="task.description" [(ngModel)]="task.description">
+				</mat-form-field>
+			</mat-cell>
+		</ng-container>
+
+		<!-- Symbol Column -->
+		<ng-container matColumnDef="status">
+			<mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
+			<mat-cell *matCellDef="let task">
+				<mat-form-field floatLabel="never">
+					<mat-select [(value)]="task.status" placeholder="Status">
+						<mat-option>None</mat-option>
+						<mat-option *ngFor="let status of taskStatuses" [value] = "status.name">{{status.name}}</mat-option>
+					</mat-select>
+				</mat-form-field>
+			</mat-cell>
+    </ng-container>
+    
+    <!-- <select class="form-control" [ngModel]="selectedStatus" (ngModelChange)="onChangeStatus($event)">
+      <option *ngFor="let status of statuses" [ngValue]="status">
+          {{status.name}}
+      </option>
+  </select> -->
+
+		
+		<ng-container matColumnDef="assigned to">
+			<mat-header-cell *matHeaderCellDef> Assigned To </mat-header-cell>
+			<mat-cell *matCellDef="let task">
+				<mat-form-field floatLabel="never">
+					<mat-select [(value)]="task.assignedUser" placeholder="User">
+						<mat-option>None</mat-option>
+						<mat-option *ngFor="let user of users" [value] = "user">{{user.userName}}</mat-option>
+					</mat-select>
+				</mat-form-field>
+			</mat-cell>
+		</ng-container>
+
+		<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+		<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+	</mat-table>
+</div>
+
+
+<!-- Copyright 2018 Google Inc. All Rights Reserved.
+    Use of this source code is governed by an MIT-style license that
+    can be found in the LICENSE file at http://angular.io/license -->

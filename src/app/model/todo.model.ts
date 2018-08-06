@@ -1,11 +1,11 @@
 import { Task } from "src/app/model/task.model";
 
-export class Todo {
+export class TodoList {
     id: number;
     name: string;
     tasksList: Task[];
 
-    public Todo(id: number, name: string) {
+    public TodoList(id: number, name: string) {
         this.id = id;
         this.name = name;
     }

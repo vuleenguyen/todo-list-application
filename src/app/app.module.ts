@@ -37,6 +37,7 @@ import { TodoService } from 'src/app/todos/todo.service';
 import { TodoEditComponent } from './todos/todo-edit/todo-edit.component';
 import { TodoMainComponent } from './todos/todo-main/todo-main.component';
 import { TodoTaskEditComponent } from './todos/todo-edit/todo-task-edit/todo-task-edit.component';
+import { TodoEditService } from 'src/app/todos/todo-edit/todo-edit.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -78,7 +79,7 @@ import { TodoTaskEditComponent } from './todos/todo-edit/todo-task-edit/todo-tas
     MatIconModule,
     MatSelectModule
   ],
-  providers: [UserService, TaskService, TodoService, DataStorageService],
+  providers: [UserService, TaskService, TodoService, TodoEditService, DataStorageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

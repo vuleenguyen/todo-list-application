@@ -25,6 +25,7 @@ export class TaskListComponent implements OnInit {
   statuses: any;
 
   ngOnInit() {
+    console.log("getAllTasks");
     this.tasks = this.taskService.getTasks();
     this.initData();
     if (this.tasks.length == 0) {

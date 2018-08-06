@@ -2,6 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { FormArray } from '@angular/forms';
 import { Task } from 'src/app/model/task.model';
+import { TodoEditService } from 'src/app/todos/todo-edit/todo-edit.service';
+
+import { DataStorageService } from 'src/app/shared/data-storage.services';
+import { Response } from '@angular/http/src/static_response';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -12,25 +17,15 @@ import { Task } from 'src/app/model/task.model';
 export class TodoEditComponent implements OnInit {
 
   todoForm: FormGroup;
-  constructor() { }
-
+  constructor(private todoEditService : TodoEditService, private dataStorageService: DataStorageService,
+    private router: Router) { }
+  tasks: Task[];
   ngOnInit() {
     this.initForm();
   }
 
   taskList: Task[] = [];
 
-  
-  addTasks() {
-    (<FormArray>this.todoForm.get('tasksList')).push(
-      new FormGroup({
-        'name': new FormControl(name, Validators.required),
-        'assignedUserName': new FormControl(null),
-        'description': new FormControl("", Validators.required),
-        'status': new FormControl("inprogress")
-      })
-    );
-  }
 
   initForm() {
     let name = '';
@@ -39,5 +34,26 @@ export class TodoEditComponent implements OnInit {
       'name': new FormControl(name, Validators.required),
       'tasksList': todoTasks
     });
+  }
+
+  addTasks() {
+    console.log("Add Task");
+    const task: Task = new Task();
+    this.todoEditService.addTaskRow(task)
+  }
+
+  onSubmit() {
+    let currentTodo = this.todoForm.value; 
+    let tasks = this.getTasksBelong();
+    currentTodo.tasksList = tasks;
+    this.dataStorageService.insertToDoList(currentTodo).subscribe(
+      (response: Response) => {
+        this.router.navigate(["todos/list"]);
+      }
+    );
+  }
+
+  getTasksBelong() {
+    return this.todoEditService.getTasks();
   }
 }

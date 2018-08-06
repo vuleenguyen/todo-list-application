@@ -1,9 +1,10 @@
 import {Component, ViewChild} from '@angular/core';
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
-import { Todo } from 'src/app/model/todo.model';
+
 import { TodoService } from 'src/app/todos/todo.service';
 import { DataStorageService } from 'src/app/shared/data-storage.services';
 import { Router } from '@angular/router';
+import { TodoList } from 'src/app/model/todo.model';
 
 @Component({
   selector: 'app-todo-list',
@@ -13,11 +14,11 @@ import { Router } from '@angular/router';
 export class TodoListComponent {
 
   displayedColumns = ['id', 'name'];
-  dataSource: MatTableDataSource<Todo>;
+  dataSource: MatTableDataSource<TodoList>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  todos : Todo[] = [];
+  todos : TodoList[] = [];
   
   constructor(private todoService: TodoService, private dataStorageService: DataStorageService,
   private router: Router) { }
@@ -28,7 +29,7 @@ export class TodoListComponent {
     }
 
     this.todoService.todoChanged.subscribe(
-      (todos: Todo[]) => {
+      (todos: TodoList[]) => {
         console.log("load done");
         this.todos = todos; 
         this.dataSource = new MatTableDataSource(todos);
@@ -48,11 +49,12 @@ export class TodoListComponent {
 
   showTasksWithSelectedRow(data: any) {
     console.log(data);
-    const todo: Todo = data;
+    const todo: TodoList = data;
     this.todoService.setTasks(todo.tasksList);
   }
 
   onNewTodo() {
+    this.dataStorageService.getUsers();
     this.router.navigate(['todos/new']);
   }
 
