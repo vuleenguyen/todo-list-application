@@ -25,6 +25,7 @@ mat-row {
   cursor: pointer;
 }
 
-mat-row:hover {
+
+.highlight{
   background: rgba(0,0,0,.03);
 }

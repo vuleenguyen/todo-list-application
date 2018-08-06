@@ -19,6 +19,7 @@ export class TodoListComponent {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   todos : TodoList[] = [];
+  selectedRowIndex: number = -1;
   
   constructor(private todoService: TodoService, private dataStorageService: DataStorageService,
   private router: Router) { }
@@ -50,6 +51,7 @@ export class TodoListComponent {
   showTasksWithSelectedRow(data: any) {
     console.log(data);
     const todo: TodoList = data;
+    this.selectedRowIndex = todo.id;
     this.todoService.setTasks(todo.tasksList);
   }
 

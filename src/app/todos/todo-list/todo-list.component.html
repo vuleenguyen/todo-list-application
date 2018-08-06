@@ -19,7 +19,8 @@
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row [ngClass]="{'highlight': index%2 == 1}" *matRowDef="let row; columns: displayedColumns;" (click)="showTasksWithSelectedRow(row)">
+    <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="showTasksWithSelectedRow(row)"
+    [ngClass]="{ 'highlight': selectedRowIndex == row.id}">
     </mat-row>
   </mat-table>
 

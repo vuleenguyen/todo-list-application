@@ -1,10 +1,10 @@
-<div class="example-header" >
+<div class="example-header" *ngIf="tasks.length > 0">
     <mat-form-field>
       <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
     </mat-form-field>
 </div>
   
-  <div class="example-container mat-elevation-z8">
+  <div class="example-container mat-elevation-z8" *ngIf="tasks.length > 0">
   
     <mat-table [dataSource]="dataSource" matSort>
   
@@ -38,7 +38,7 @@
         </ng-container>
   
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-      <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="abc()">
+      <mat-row *matRowDef="let row; columns: displayedColumns;">
       </mat-row>
     </mat-table>
   
