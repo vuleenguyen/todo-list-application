@@ -17,6 +17,14 @@
   
   .mat-table {
     overflow: auto;
-    max-height: 500px;
+    max-height: 500px;  
   }
-  
+
+
+mat-row {
+  cursor: pointer;
+}
+
+mat-row:hover {
+  background: rgba(0,0,0,.03);
+}
