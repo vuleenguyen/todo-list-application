@@ -6,3 +6,16 @@
   .example-container > * {
     width: 100%;
   }
+
+  app-todo-task-edit {
+    margin-top: 20px;
+  }
+
+  #addTaskBtn {
+    width: 15%;
+    margin-top: 10px;
+  }
+
+  #todoInsertBtn {
+    float: right;
+  }

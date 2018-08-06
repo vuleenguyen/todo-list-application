@@ -3,8 +3,8 @@
       <mat-form-field>
         <input matInput placeholder="Name" formControlName="name">
       </mat-form-field>
-      <button mat-flat-button>Save</button>
+      <button mat-flat-button [disabled]="todoForm.invalid" id="todoInsertBtn">Save</button>
     </form>
-    <button mat-flat-button (click)="addTasks()">Add Tasks</button>
+    <button mat-flat-button (click)="addTasks()" id="addTaskBtn">Add Tasks</button>
     <app-todo-task-edit></app-todo-task-edit>
   </div>
