@@ -1,7 +1,6 @@
 <div class="example-container mat-elevation-z8" *ngIf="tasks.length > 0">
 	<mat-table #table [dataSource]="dataSource">
-
-		<!-- Name Column -->
+		  <!-- Checkbox Column -->
 		<ng-container matColumnDef="name">
 			<mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
 			<mat-cell *matCellDef="let task">
@@ -11,7 +10,7 @@
 			</mat-cell>
 		</ng-container>
 
-		<!-- Weight Column -->
+
 		<ng-container matColumnDef="description">
 			<mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
 			<mat-cell *matCellDef="let task">
@@ -21,7 +20,6 @@
 			</mat-cell>
 		</ng-container>
 
-		<!-- Symbol Column -->
 		<ng-container matColumnDef="status">
 			<mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
 			<mat-cell *matCellDef="let task">

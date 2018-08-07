@@ -52,7 +52,7 @@ export class TaskEditComponent implements OnInit {
           const task: Task = response.json();
           name = task.name;
           description = task.description;
-          assignedUserName = task.assignedUser.userName;
+          assignedUserName = task.assignedUser === null ? null : task.assignedUser.userName;
           status = task.status;
           this.dataStorageService.getUsersFromTask().subscribe(
             (response: Response) => {

@@ -34,7 +34,7 @@
 
     <ng-container matColumnDef="Assigned User">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Assigned User </mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.assignedUser.userName}} </mat-cell>
+      <mat-cell *matCellDef="let row"> {{row.assignedUser?.name}} </mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

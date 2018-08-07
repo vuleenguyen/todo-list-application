@@ -39,7 +39,7 @@
             <td>{{task.name}}</td>
             <td>{{task.description}}</td>
             <td>{{task.status}}</td>
-            <td>{{task.assignedUser.userName}}</td>
+            <td>{{task.assignedUser?.userName}}</td>
             <td>
                 <a class="btn btn-sm btn-warning" (click)="onEdit($event, task)">
                     <mat-icon>edit</mat-icon>
