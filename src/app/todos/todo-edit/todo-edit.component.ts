@@ -15,10 +15,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./todo-edit.component.css']
 })
 export class TodoEditComponent implements OnInit {
-  
+
 
   todoForm: FormGroup;
-  constructor(private todoEditService : TodoEditService, private dataStorageService: DataStorageService,
+  constructor(private todoEditService: TodoEditService, private dataStorageService: DataStorageService,
     private router: Router) { }
   tasks: Task[];
   ngOnInit() {
@@ -44,7 +44,7 @@ export class TodoEditComponent implements OnInit {
   }
 
   onSubmit() {
-    let currentTodo = this.todoForm.value; 
+    let currentTodo = this.todoForm.value;
     let tasks = this.getTasksBelong();
     currentTodo.tasksList = tasks;
     this.dataStorageService.insertToDoList(currentTodo).subscribe(

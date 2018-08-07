@@ -1,46 +1,50 @@
 <div class="action">
 
-<button mat-flat-button (click)="onNewTask()">
+    <button mat-flat-button (click)="onNewTask()">
         <mat-icon>add</mat-icon>
         Add</button>
 
-<div id="statusFilter">
-    <label for="status">Status</label>
-    <select class="form-control" [ngModel]="selectedStatus" (ngModelChange)="onChangeStatus($event)">
-        <option *ngFor="let status of statuses" [ngValue]="status">
-            {{status.name}}
-        </option>
-    </select>
-</div>
+    <div id="statusFilter">
+        <label for="status">Status</label>
+        <select class="form-control" [ngModel]="selectedStatus" (ngModelChange)="onChangeStatus($event)">
+            <option *ngFor="let status of statuses" [ngValue]="status">
+                {{status.name}}
+            </option>
+        </select>
+    </div>
 
-<div id="userFilter">
-    <label for="status">User</label>
-    <select class="form-control right" [ngModel]="selectedUserObj" (ngModelChange)="onChangeUser($event)">
-        <option [ngValue]="emptyUser" selected="selected">All Users</option>
-        <option *ngFor="let user of users" [ngValue]="user">
-            {{user.userName}}
-        </option>
-    </select>
-</div>
+    <div id="userFilter">
+        <label for="status">User</label>
+        <select class="form-control right" [ngModel]="selectedUserObj" (ngModelChange)="onChangeUser($event)">
+            <option [ngValue]="emptyUser" selected="selected">All Users</option>
+            <option *ngFor="let user of users" [ngValue]="user">
+                {{user.userName}}
+            </option>
+        </select>
+    </div>
 </div>
 
 <table class="table table-striped">
     <thead>
         <tr>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Status</th>
-        <th>Assigned To</th>
-        <th>Action</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Status</th>
+            <th>Assigned To</th>
+            <th>Action</th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let task of tasks">
-          <td>{{task.name}}</td>
-          <td>{{task.description}}</td>
-          <td>{{task.status}}</td>
-          <td>{{task.assignedUser.userName}}</td>
-          <td><a class="btn btn-sm btn-warning" (click)="onEdit($event, task)"><mat-icon>edit</mat-icon></a></td>
+            <td>{{task.name}}</td>
+            <td>{{task.description}}</td>
+            <td>{{task.status}}</td>
+            <td>{{task.assignedUser.userName}}</td>
+            <td>
+                <a class="btn btn-sm btn-warning" (click)="onEdit($event, task)">
+                    <mat-icon>edit</mat-icon>
+                </a>
+            </td>
         </tr>
     </tbody>
 </table>

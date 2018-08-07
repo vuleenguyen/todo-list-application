@@ -1,7 +1,7 @@
 import { Task } from "src/app/model/task.model";
 import { Subject } from "rxjs/internal/Subject";
 
-export class TodoEditService {  
+export class TodoEditService {
     taskChanged = new Subject<Task>();
     tasksChanged = new Subject<Task[]>();
     tasks: Task[];

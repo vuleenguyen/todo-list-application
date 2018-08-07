@@ -1,17 +1,17 @@
-
-<div *ngIf="isDataAvailable"> 
+<div *ngIf="isDataAvailable">
   <div class="container">
     <div class="row">
-      <div class="toppad col-sm-12" >
+      <div class="toppad col-sm-12">
         <div class="panel panel-info">
           <div class="panel-heading">
             <h3 class="panel-title">{{user.userName}}</h3>
           </div>
           <div class="panel-body">
             <div class="row">
-              <div class="col-md-3 col-lg-3 " align="center"> <img alt="Avatar" src="../../../assets/images/image.png" class="img-rounded img-responsive"> </div>
+              <div class="col-md-3 col-lg-3 " align="center">
+                <img alt="Avatar" src="../../../assets/images/image.png" class="img-rounded img-responsive"> </div>
 
-              <div class=" col-md-9 col-lg-9 "> 
+              <div class=" col-md-9 col-lg-9 ">
                 <table class="table table-user-information">
                   <tbody>
                     <tr>
@@ -21,24 +21,30 @@
                     <tr>
                       <td>Last Name: </td>
                       <td>{{user.lastName}}</td>
-                    </tr>    
+                    </tr>
                     <tr>
                       <td>Email: </td>
-                      <td><a id="email" href="mailto:info@support.com">{{user.email}}</a></td>
+                      <td>
+                        <a id="email" href="mailto:info@support.com">{{user.email}}</a>
+                      </td>
                     </tr>
                   </tbody>
                 </table>
               </div>
             </div>
           </div>
-            <div class="panel-footer">
-                  <div class="action">
-                    <span>
-                        <a class="btn btn-sm btn-warning" (click)="onEdit()"><i class="fa fa-edit"></i></a>
-                        <a class="btn btn-sm btn-danger" (click)="onRemove()"><i class="fa fa-close"></i></a>
-                    </span>
-                  </div>
+          <div class="panel-footer">
+            <div class="action">
+              <span>
+                <a class="btn btn-sm btn-warning" (click)="onEdit()">
+                  <i class="fa fa-edit"></i>
+                </a>
+                <a class="btn btn-sm btn-danger" (click)="onRemove()">
+                  <i class="fa fa-close"></i>
+                </a>
+              </span>
             </div>
+          </div>
         </div>
       </div>
     </div>

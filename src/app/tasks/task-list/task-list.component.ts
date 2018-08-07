@@ -15,8 +15,8 @@ import { User } from 'src/app/model/user.model';
 export class TaskListComponent implements OnInit {
   tasks: Task[] = [];
   constructor(private taskService: TaskService, private dataStorageService: DataStorageService,
-    private router : Router, private userService : UserService) { }
-  
+    private router: Router, private userService: UserService) { }
+
   selectedUserObj: User;
   selectedStatus = null;
 
@@ -37,24 +37,24 @@ export class TaskListComponent implements OnInit {
     }
 
     this.taskService.taskChanged.subscribe(
-        (tasks: Task[])=> {
-          this.tasks = tasks;
-        }
-    ); 
-
-    this.userService.usersChanged.subscribe(
-        (users: User[]) => {
-          this.users = users;
-        }
+      (tasks: Task[]) => {
+        this.tasks = tasks;
+      }
     );
 
-    
+    this.userService.usersChanged.subscribe(
+      (users: User[]) => {
+        this.users = users;
+      }
+    );
+
+
   }
 
   initData() {
     this.statuses = Task.TaskStatus;
     let isExitNotCompleteStatus = false;
-    for(let i = 0; i < this.statuses.length; i++) {
+    for (let i = 0; i < this.statuses.length; i++) {
       if (this.statuses[i].name === "notcompleted") {
         isExitNotCompleteStatus = true;
         break;
@@ -62,8 +62,8 @@ export class TaskListComponent implements OnInit {
     }
     console.log("initdata");
     if (!isExitNotCompleteStatus) {
-      this.statuses.push({id: 4, name: "notcompleted"});
-    }    
+      this.statuses.push({ id: 4, name: "notcompleted" });
+    }
   }
 
   loadTasks() {
@@ -101,6 +101,6 @@ export class TaskListComponent implements OnInit {
     } else {
       this.dataStorageService.getTasksByUserAndStatus(this.selectedUserObj, this.selectedStatus.name);
     }
-    
+
   }
 }

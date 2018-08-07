@@ -1,33 +1,31 @@
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-    <div class="container">
-      <div class="brandlogo">
-          <div class="logo">
-            <img src="../../../assets/images/logo-sign.png" style="width: 30px">
-          </div>
-          <div class="brand">
-            <img src="../../../assets/images/logo-text.png" style="width: 90px">
-          </div>
+  <div class="container">
+    <div class="brandlogo">
+      <div class="logo">
+        <img src="../../../assets/images/logo-sign.png" style="width: 30px">
       </div>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item" routerLinkActive="active"
-            [routerLinkActiveOptions]="{exact: true}">
-            <a class="nav-link" routerLink="/">Home
-              <span class="sr-only">(current)</span>
-            </a>
-          </li>
-          <li class="nav-item" routerLinkActive="active">
-            <a class="nav-link" routerLink="/about">About</a>
-          </li>
-          <li class="nav-item" routerLinkActive="active">
-            <a class="nav-link" routerLink="/contact">Contact</a>
-          </li>
-        </ul>
+      <div class="brand">
+        <img src="../../../assets/images/logo-text.png" style="width: 90px">
       </div>
     </div>
-  </nav>
-
-  
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+          <a class="nav-link" routerLink="/">Home
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink="/about">About</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink="/contact">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

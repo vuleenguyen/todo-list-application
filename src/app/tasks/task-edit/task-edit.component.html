@@ -1,34 +1,34 @@
-<div *ngIf="isDataAvailable"> 
+<div *ngIf="isDataAvailable">
   <form class="block mbr-form" id="taskForm" [formGroup]="taskForm" (ngSubmit)="onSubmit()">
-    <div class="row"> 
-        <input type="text"  class="form-control" name="id" formControlName="id" type="hidden" id = "id">
-        <div class="form-group col-sm-6">
-          <label for="name">Name:</label>
-          <input type="text" class="form-control" id="name" formControlName="name">
-        </div>
-        <div class="form-group col-sm-6">
-          <label for="status">Status</label>
-          <select name="status" formControlName="status" class="form-control">
-            <option *ngFor="let status of statuses" [ngValue]="status.name">
-                {{status.name}}
-            </option>
-          </select>
-        </div>
-        <div class="form-group col-sm-6">
-            <label for="assignedUserName">Assigned To</label>
-            <select name="assignedUserName" formControlName="assignedUserName" class="form-control">
-              <option *ngFor="let user of users" [ngValue]="user.userName">
-                  {{user.userName}}
-              </option>
-            </select>
-        </div>
-        <div class="form-group col-sm-12">
-            <label for="description">Description</label>
-            <textarea class="form-control" rows="5" id="description" formControlName="description"></textarea>
-        </div>
-        <div class="form-group col-sm-12">
-          <button class="btn btn-primary" [disabled]='taskForm.invalid'>Create</button>
-        </div>
+    <div class="row">
+      <input type="text" class="form-control" name="id" formControlName="id" type="hidden" id="id">
+      <div class="form-group col-sm-6">
+        <label for="name">Name:</label>
+        <input type="text" class="form-control" id="name" formControlName="name">
+      </div>
+      <div class="form-group col-sm-6">
+        <label for="status">Status</label>
+        <select name="status" formControlName="status" class="form-control">
+          <option *ngFor="let status of statuses" [ngValue]="status.name">
+            {{status.name}}
+          </option>
+        </select>
+      </div>
+      <div class="form-group col-sm-6">
+        <label for="assignedUserName">Assigned To</label>
+        <select name="assignedUserName" formControlName="assignedUserName" class="form-control">
+          <option *ngFor="let user of users" [ngValue]="user.userName">
+            {{user.userName}}
+          </option>
+        </select>
+      </div>
+      <div class="form-group col-sm-12">
+        <label for="description">Description</label>
+        <textarea class="form-control" rows="5" id="description" formControlName="description"></textarea>
+      </div>
+      <div class="form-group col-sm-12">
+        <button class="btn btn-primary" [disabled]='taskForm.invalid'>Create</button>
+      </div>
     </div>
   </form>
 </div>

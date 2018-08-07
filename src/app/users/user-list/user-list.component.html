@@ -3,16 +3,14 @@
     <div class="container">
       <!-- //<button id="newUserBtn" class="btn btn-success" (click)="onNewUser()"><i class="fa fa-plus"></i> User</button> -->
       <button mat-flat-button (click)="onNewUser()" id="newUserBtn">
-          <mat-icon>add</mat-icon>
-          Add</button>
+        <mat-icon>add</mat-icon>
+        Add</button>
 
     </div>
-    <div class="container"
-    infiniteScroll [infiniteScrollDistance]="0" 
-    [infiniteScrollThrottle]="300" (scrolled)="loadMore($event)"
-    [scrollWindow]="false"class="search-results">
-        <app-user-item *ngFor="let userEl of users; let i = index" [user]="userEl">
-        </app-user-item>
+    <div class="container" infiniteScroll [infiniteScrollDistance]="0" [infiniteScrollThrottle]="300" (scrolled)="loadMore($event)"
+      [scrollWindow]="false" class="search-results">
+      <app-user-item *ngFor="let userEl of users; let i = index" [user]="userEl">
+      </app-user-item>
     </div>
   </div>
   <div class="col-sm-1">
@@ -21,5 +19,5 @@
   <div class="col-sm-6">
     <div style="height: 30px"></div>
     <router-outlet></router-outlet>
-  </div> 
+  </div>
 </div>

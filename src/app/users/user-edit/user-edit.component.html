@@ -1,11 +1,10 @@
-
-  <form class="mbr-form" [formGroup]="userForm" (ngSubmit)="onSubmit()">
-    <input type="text"  class="form-control" name="id" formControlName="id" type="hidden" id = "id">
+<form class="mbr-form" [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <input type="text" class="form-control" name="id" formControlName="id" type="hidden" id="id">
     <div class="row row-sm-offset">
         <div class="col-md-6 multi-horizontal" data-for="userName">
             <div class="form-group">
                 <label class="form-control-label mbr-fonts-style display-7" for="userName">Username</label>
-                <input type="text"  class="form-control" name="userName" formControlName="userName" required="" id = "userName">
+                <input type="text" class="form-control" name="userName" formControlName="userName" required="" id="userName">
             </div>
         </div>
         <div class="col-md-6 multi-horizontal" data-for="email">
@@ -21,13 +20,13 @@
             </div>
         </div>
         <div class="col-md-6 multi-horizontal" data-for="lastName">
-          <div class="form-group">
-              <label class="form-control-label mbr-fonts-style display-7" for="lastName">Last Name</label>
-              <input type="text" class="form-control" name="lastName" formControlName="lastName" id="lastName">
-          </div>
-      </div>
+            <div class="form-group">
+                <label class="form-control-label mbr-fonts-style display-7" for="lastName">Last Name</label>
+                <input type="text" class="form-control" name="lastName" formControlName="lastName" id="lastName">
+            </div>
+        </div>
     </div>
     <span class="input-group-btn">
         <button [disabled]="userForm.invalid" type="submit" class="btn btn-primary btn-form display-4">{{ !isEdit ? 'Insert' : 'Update'}}</button>
     </span>
-  </form>
+</form>

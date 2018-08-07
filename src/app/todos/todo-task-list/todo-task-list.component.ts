@@ -1,5 +1,5 @@
-import {Component, ViewChild, OnInit} from '@angular/core';
-import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
+import { Component, ViewChild, OnInit } from '@angular/core';
+import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { TodoService } from 'src/app/todos/todo.service';
 import { Task } from 'src/app/model/task.model';
 
@@ -8,8 +8,8 @@ import { Task } from 'src/app/model/task.model';
   templateUrl: './todo-task-list.component.html',
   styleUrls: ['./todo-task-list.component.css']
 })
-export class TodoTaskListComponent implements OnInit  {
-  
+export class TodoTaskListComponent implements OnInit {
+
 
   displayedColumns = ['id', 'Name', 'Description', 'Status', 'Assigned User'];
   dataSource: MatTableDataSource<Task>;
@@ -19,7 +19,7 @@ export class TodoTaskListComponent implements OnInit  {
   tasks: Task[] = [];
 
   constructor(private todoService: TodoService) {
-  
+
     // Assign the data to the data source for the table to render
   }
 
@@ -36,9 +36,9 @@ export class TodoTaskListComponent implements OnInit  {
     )
   }
 
-  
+
   ngAfterViewInit() {
-    
+
   }
 
   applyFilter(filterValue: string) {
@@ -48,13 +48,5 @@ export class TodoTaskListComponent implements OnInit  {
   }
 
 }
-
-
-/** Constants used to fill up our data base. */
-const COLORS = ['maroon', 'red', 'orange', 'yellow', 'olive', 'green', 'purple',
-  'fuchsia', 'lime', 'teal', 'aqua', 'blue', 'navy', 'black', 'gray'];
-const NAMES = ['Maia', 'Asher', 'Olivia', 'Atticus', 'Amelia', 'Jack',
-  'Charlotte', 'Theodore', 'Isla', 'Oliver', 'Isabella', 'Jasper',
-  'Cora', 'Levi', 'Violet', 'Arthur', 'Mia', 'Thomas', 'Elizabeth'];
 
 

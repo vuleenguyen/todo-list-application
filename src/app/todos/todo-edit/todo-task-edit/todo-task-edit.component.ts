@@ -12,11 +12,11 @@ import { TodoEditService } from 'src/app/todos/todo-edit/todo-edit.service';
   styleUrls: ['./todo-task-edit.component.css']
 })
 export class TodoTaskEditComponent implements OnInit {
-  
+
   displayedColumns = ['name', 'description', 'status', 'assigned to'];
   tasks: Task[] = [];
   taskStatuses = Task.TaskStatus;
-  users : User[];
+  users: User[];
   dataSource = null;
 
   constructor(private dataStorageService: DataStorageService, private userService: UserService,
@@ -42,7 +42,7 @@ export class TodoTaskEditComponent implements OnInit {
 
   loadUserData() {
     this.userService.usersChanged.subscribe(
-      (users : User[]) => {
+      (users: User[]) => {
         this.users = users;
       }
     )

@@ -7,8 +7,8 @@ import { CommonModule } from "@angular/common";
     declarations: [
         DropdownDirective,
         ItemdecorateDirective
-    ], 
-    exports : [
+    ],
+    exports: [
         CommonModule,
         DropdownDirective, ItemdecorateDirective
     ]

@@ -1,11 +1,13 @@
+<button mat-flat-button [matMenuTriggerFor]="menu">
 
-  
-<button mat-flat-button [matMenuTriggerFor]="menu">Action</button>
+  Action</button>
 <mat-menu #menu="matMenu">
-  <button mat-menu-item (click)="onNewTodo()"><mat-icon>add</mat-icon> Add</button>
-  <button mat-menu-item (click)="onDeleteTodo()" [disabled]="isRowSelected"><mat-icon>remove</mat-icon> Remove</button>
+  <button mat-menu-item (click)="onNewTodo()">
+    <mat-icon>add</mat-icon> Add</button>
+  <button mat-menu-item (click)="onDeleteTodo()" [disabled]="isRowSelected">
+    <mat-icon>remove</mat-icon> Remove</button>
 </mat-menu>
-  
+
 
 <div class="example-container mat-elevation-z8">
 
@@ -24,8 +26,7 @@
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="showTasksWithSelectedRow(row)"
-    [ngClass]="{ 'highlight': selectedRowIndex == row.id}">
+    <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="showTasksWithSelectedRow(row)" [ngClass]="{ 'highlight': selectedRowIndex == row.id}">
     </mat-row>
   </mat-table>
 

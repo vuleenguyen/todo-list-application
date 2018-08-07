@@ -20,8 +20,8 @@ export class TaskEditComponent implements OnInit {
   taskForm: FormGroup;
   statuses: any;
   users: User[];
-  constructor(private dataStorageService: DataStorageService, private userService: UserService 
-  ,private router: Router, private route: ActivatedRoute, private taskService: TaskService) { }
+  constructor(private dataStorageService: DataStorageService, private userService: UserService
+    , private router: Router, private route: ActivatedRoute, private taskService: TaskService) { }
   isDataAvailable = false;
   isEditMode: boolean = false;
   id: number;
@@ -35,17 +35,17 @@ export class TaskEditComponent implements OnInit {
         this.initForm();
       }
     );
-    
+
   }
 
   private initForm() {
-    
+
     this.statuses = Task.TaskStatus;
     let name = '';
     let description = '';
     let assignedUserName = '';
     let status = '';
-    
+
     if (this.isEditMode) {
       this.dataStorageService.getTask(this.id).subscribe(
         (response: Response) => {
@@ -59,7 +59,7 @@ export class TaskEditComponent implements OnInit {
               const users: User[] = response.json();
               this.users = users;
               this.taskForm = new FormGroup({
-                'id' : new FormControl(this.id),
+                'id': new FormControl(this.id),
                 'name': new FormControl(name, Validators.required),
                 'assignedUserName': new FormControl(assignedUserName),
                 'description': new FormControl(description, Validators.required),
@@ -77,7 +77,7 @@ export class TaskEditComponent implements OnInit {
           const users: User[] = response.json();
           this.users = users;
           this.taskForm = new FormGroup({
-            'id' : new FormControl(this.id),
+            'id': new FormControl(this.id),
             'name': new FormControl(name, Validators.required),
             'assignedUserName': new FormControl(null),
             'description': new FormControl(description, Validators.required),
@@ -111,7 +111,7 @@ export class TaskEditComponent implements OnInit {
   }
 
   getId(name: string) {
-    for(let user of this.users) {
+    for (let user of this.users) {
       if (user.userName === name) return user.id;
     }
   }

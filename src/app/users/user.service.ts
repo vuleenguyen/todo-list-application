@@ -1,11 +1,11 @@
 import { User } from "src/app/model/user.model";
 import { Subject } from "rxjs/internal/Subject";
-import {Http, Response} from '@angular/http';
+import { Http, Response } from '@angular/http';
 
 export class UserService {
     usersChanged = new Subject<User[]>();
     private users: User[] = [];
-    
+
 
     setUsers(users: User[]) {
         this.users = users;

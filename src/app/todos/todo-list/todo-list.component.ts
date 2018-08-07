@@ -1,5 +1,5 @@
-import {Component, ViewChild} from '@angular/core';
-import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
+import { Component, ViewChild } from '@angular/core';
+import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 
 import { TodoService } from 'src/app/todos/todo.service';
 import { DataStorageService } from 'src/app/shared/data-storage.services';
@@ -19,12 +19,12 @@ export class TodoListComponent {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  todos : TodoList[] = [];
+  todos: TodoList[] = [];
   selectedRowIndex: number = -1;
   isRowSelected = true;
-  
+
   constructor(private todoService: TodoService, private dataStorageService: DataStorageService,
-  private router: Router) { }
+    private router: Router) { }
 
   ngOnInit() {
     if (this.todos.length == 0) {
@@ -34,7 +34,7 @@ export class TodoListComponent {
     this.todoService.todoChanged.subscribe(
       (todos: TodoList[]) => {
         console.log("load done");
-        this.todos = todos; 
+        this.todos = todos;
         this.dataSource = new MatTableDataSource(todos);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
@@ -47,7 +47,7 @@ export class TodoListComponent {
   }
 
   ngAfterViewInit() {
-    
+
   }
 
   showTasksWithSelectedRow(data: any) {

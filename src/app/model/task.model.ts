@@ -10,8 +10,8 @@ export class Task {
     assignedUser: User;
 
     public static TaskStatus: any = [
-        {id: 1, name: "notstarted"},
-        {id: 2, name: "inprogress"},
-        {id: 3, name: "complete"}
+        { id: 1, name: "notstarted" },
+        { id: 2, name: "inprogress" },
+        { id: 3, name: "complete" }
     ]
 }

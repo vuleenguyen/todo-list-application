@@ -1,4 +1,4 @@
-import {Http, Response} from '@angular/http';
+import { Http, Response } from '@angular/http';
 import { User } from 'src/app/model/user.model';
 import { UserService } from 'src/app/users/user.service';
 import { Injectable } from '@angular/core';
@@ -11,21 +11,21 @@ import { TodoList } from 'src/app/model/todo.model';
 
 @Injectable()
 export class DataStorageService {
-    constructor(private http: Http, private userService: UserService, 
+    constructor(private http: Http, private userService: UserService,
         private taskService: TaskService,
-        private todoService: TodoService){
+        private todoService: TodoService) {
 
-        }
+    }
 
     getUsers() {
         this.http.get("http://localhost:8080/users")
             .subscribe(
-                (response: Response) => {
-                    
-                    const users: User[] = response.json();
-                    console.log(users);
-                    this.userService.setUsers(users);
-                }
+            (response: Response) => {
+
+                const users: User[] = response.json();
+                console.log(users);
+                this.userService.setUsers(users);
+            }
             );
     }
 
@@ -47,12 +47,12 @@ export class DataStorageService {
 
     getTasks() {
         this.http.get("http://localhost:8080/tasks")
-        .subscribe(
+            .subscribe(
             (response: Response) => {
                 const tasks: Task[] = response.json();
                 this.taskService.setTasks(tasks);
             }
-        );
+            );
     }
 
     insertTask(task: Task) {
@@ -73,32 +73,32 @@ export class DataStorageService {
 
     getTasksByStatus(status: string) {
         this.http.get("http://localhost:8080/tasks/" + status)
-        .subscribe(
+            .subscribe(
             (response: Response) => {
                 const tasks: Task[] = response.json();
                 this.taskService.setTasks(tasks);
             }
-        );
+            );
     }
 
     getTasksByUser(user: User) {
         this.http.get("http://localhost:8080/tasks/users/" + user.id)
-        .subscribe(
+            .subscribe(
             (response: Response) => {
                 const tasks: Task[] = response.json();
                 this.taskService.setTasks(tasks);
             }
-        );
+            );
     }
 
     getTasksByUserAndStatus(user: User, status: string) {
         this.http.get("http://localhost:8080/tasks/user?userId=" + user.id + "&status=" + status)
-        .subscribe(
+            .subscribe(
             (response: Response) => {
                 const tasks: Task[] = response.json();
                 this.taskService.setTasks(tasks);
             }
-        );
+            );
     }
 
     getUsersWithPaging(page: number) {
@@ -108,24 +108,24 @@ export class DataStorageService {
     getUsersWithPagingInit(page: number) {
         this.http.get("http://localhost:8080/users/page?page=" + page)
             .subscribe(
-                (response: Response) => {
-                    
-                    const users: User[] = response.json();
-                    console.log(users);
-                    this.userService.setUsers(users);
-                }
+            (response: Response) => {
+
+                const users: User[] = response.json();
+                console.log(users);
+                this.userService.setUsers(users);
+            }
             );
     }
 
     getTodos() {
         console.log("totdo");
         this.http.get("http://localhost:8080/todolists")
-        .subscribe(
+            .subscribe(
             (response: Response) => {
                 const todos: TodoList[] = response.json();
                 this.todoService.setTodos(todos);
             }
-        );
+            );
     }
 
     insertToDoList(todoList: TodoList) {
