@@ -1,15 +1,16 @@
 import { Subject } from "rxjs";
-import { Todo } from "src/app/model/todo.model";
+
 import { Task } from "src/app/model/task.model";
+import { TodoList } from "src/app/model/todo.model";
 
 export class TodoService {
     
-    todoChanged = new Subject<Todo[]>();
-    private todos: Todo[] = [];
+    todoChanged = new Subject<TodoList[]>();
+    private todos: TodoList[] = [];
     taskChanged = new Subject<Task[]>();
     private tasks: Task[]= [];
 
-    setTodos(todos: Todo[]) {
+    setTodos(todos: TodoList[]) {
         this.todos = todos;
         this.todoChanged.next(todos.slice());
     }

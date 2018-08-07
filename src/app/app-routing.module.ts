@@ -17,46 +17,48 @@ import { TodoEditComponent } from "src/app/todos/todo-edit/todo-edit.component";
 
 
 const appRoutes: Routes = [
-    {
-      path: 'users', component: UsersComponent, children: [
-          {path: '', redirectTo: '/users/list', pathMatch: 'full'},
-          {path: 'list', component: UserListComponent, children: [
-            {path: ':id', component: UserDetailComponent},
-          ]},
-          {path: 'new', component: UserEditComponent},
-         
-          {path: ':id/edit', component: UserEditComponent},
-      ]
-    },
-    {
-      path: 'tasks', component: TasksComponent, children: [
-        {path: '', redirectTo: '/tasks/list', pathMatch: 'full'},
-        {path: 'list', component: TaskListComponent},
-        {path: 'new', component: TaskEditComponent},
-        {path: ':id/edit', component: TaskEditComponent}
-      ]
-    },
-    {
-      path: 'todos', component: TodosComponent, children: [
-        {path: '', redirectTo: '/todos/list', pathMatch: 'full'},
-        {path: 'list', component: TodoMainComponent},
-        {path: 'new', component: TodoEditComponent}
-      ]
-    }, 
-    {
-      path: 'about', component: AboutComponent  
-    }, 
-    {
-      path: 'contact', component: ContactComponent
-    },
-    {
-      path: '', component: HomeComponent 
-    }
-  ];
+  {
+    path: 'users', component: UsersComponent, children: [
+      { path: '', redirectTo: '/users/list', pathMatch: 'full' },
+      {
+        path: 'list', component: UserListComponent, children: [
+          { path: ':id', component: UserDetailComponent },
+        ]
+      },
+      { path: 'new', component: UserEditComponent },
+
+      { path: ':id/edit', component: UserEditComponent },
+    ]
+  },
+  {
+    path: 'tasks', component: TasksComponent, children: [
+      { path: '', redirectTo: '/tasks/list', pathMatch: 'full' },
+      { path: 'list', component: TaskListComponent },
+      { path: 'new', component: TaskEditComponent },
+      { path: ':id/edit', component: TaskEditComponent }
+    ]
+  },
+  {
+    path: 'todos', component: TodosComponent, children: [
+      { path: '', redirectTo: '/todos/list', pathMatch: 'full' },
+      { path: 'list', component: TodoMainComponent },
+      { path: 'new', component: TodoEditComponent }
+    ]
+  },
+  {
+    path: 'about', component: AboutComponent
+  },
+  {
+    path: 'contact', component: ContactComponent
+  },
+  {
+    path: '', component: HomeComponent
+  }
+];
 
 @NgModule({
-    imports: [RouterModule.forRoot(appRoutes)],
-    exports: [RouterModule]
+  imports: [RouterModule.forRoot(appRoutes)],
+  exports: [RouterModule]
 })
 export class AppRoutingModule {
 

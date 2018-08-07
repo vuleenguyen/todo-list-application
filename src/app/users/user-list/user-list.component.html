@@ -7,8 +7,7 @@
     <div class="container"
     infiniteScroll [infiniteScrollDistance]="0" 
     [infiniteScrollThrottle]="300" (scrolled)="loadMore($event)"
-    [scrollWindow]="false"class="search-results"
-    >
+    [scrollWindow]="false"class="search-results">
         <app-user-item *ngFor="let userEl of users; let i = index" [user]="userEl">
         </app-user-item>
     </div>

@@ -78,7 +78,7 @@ import { TodoEditService } from 'src/app/todos/todo-edit/todo-edit.service';
     MatInputModule,
     MatIconModule,
     MatSelectModule,
-    MatMenuModule
+    MatMenuModule,
   ],
   providers: [UserService, TaskService, TodoService, TodoEditService, DataStorageService],
   bootstrap: [AppComponent]

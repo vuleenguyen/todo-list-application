@@ -1,13 +1,28 @@
 <nav class="col-sm-3 col-md-2 hidden-xs-down bg-faded sidebar">
-    <ul class="nav nav-pills flex-column">
-      <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" routerLink="/tasks" (click)="onFetchTask()">Tasks</a>
-      </li>
-      <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" routerLink="/users" (click)="onFetchUser()">Users</a>
-      </li>
-      <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" routerLink="/todos/list" (click)="onFetchTodo()">Todos</a>
-      </li>
-    </ul>
-  </nav>
+  <div class="sidebar-container">
+    <div class="gene-user-thumb text-center">
+      <img alt="user list image" class="img-responsive img-circle" height="107" src="../../../assets/images/profile-image.jpg"
+        width="107">
+      <span class="gene-user-name gene-block">Hoan Vu Le</span>
+    </div>
+    <div class="list">
+      <div class="list-item">
+        <div class="list-item-content">
+          <a routerLink="/tasks" (click)="onFetchTask()">
+            Tasks
+          </a>
+        </div>
+      </div>
+      <div class="list-item">
+        <div class="list-item-content">
+          <a routerLink="/users" (click)="onFetchUser()">Users</a>
+        </div>
+      </div>
+      <div class="list-item">
+        <div class="list-item-content">
+          <a routerLink="/todos/list" (click)="onFetchTodo()">Todos</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
