@@ -9,7 +9,6 @@ import { error } from '@angular/compiler/src/util';
 import { User } from 'src/app/model/user.model';
 import { Subscription } from 'rxjs';
 import { UserService } from 'src/app/users/user.service';
-import { NgZone } from '@angular/core';
 
 @Component({
   selector: 'app-user-edit',
@@ -22,59 +21,44 @@ export class UserEditComponent implements OnInit {
   isEdit = false;
 
   constructor(private route: ActivatedRoute,
-    private router: Router, private dataStorageService : DataStorageService
-    , private userService: UserService, private zone:NgZone) { 
-}
+    private router: Router, private dataStorageService: DataStorageService
+    , private userService: UserService) {
+  }
 
   ngOnInit() {
-    console.log("userEit");
     this.route.params.subscribe(
-      (params : Params) => {
+      (params: Params) => {
         this.id = +params['id'];
         this.isEdit = params['id'] !== undefined;
-        this.initForm();
+        this.initData();
       }
     );
   }
 
-  private initForm() {
-    let userName = '';
-    let email = '';
-    let firstName = '';
-    let lastName = '';
-    let id = '';
+  private initData() {
+    const emptyString = '';
 
     if (this.isEdit) {
       this.dataStorageService.getUser(this.id).subscribe(
-        (response: Response)=> {
-          console.log("ehhehehe");
+        (response: Response) => {
           const user = response.json();
-          id = user.id;
-          userName = user.userName;
-          email = user.email;
-          firstName = user.firstName;
-          lastName = user.lastName;
-          this.userForm = new FormGroup({
-            'id' : new FormControl(id),
-            'userName' : new FormControl(userName, Validators.required),
-            'email' : new FormControl(email, Validators.required),
-            'firstName' : new FormControl(firstName, Validators.required),
-            'lastName' : new FormControl(lastName, Validators.required),
-          })
+          this.initForm(user.id, user.userName, user.email, user.firstName, user.lastName);
         }
       )
 
     } else {
-      this.userForm = new FormGroup({
-        'id' : new FormControl(id),
-        'userName' : new FormControl(userName, Validators.required),
-        'email' : new FormControl(email, [Validators.required, Validators.email]),
-        'firstName' : new FormControl(firstName, Validators.required),
-        'lastName' : new FormControl(lastName, Validators.required),
-      })
+      this.initForm(emptyString, emptyString, emptyString, emptyString, emptyString);
     }
+  }
 
-    
+  initForm(id: string, userName: string, email: string, firstName: string, lastName: string) {
+    this.userForm = new FormGroup({
+      'id': new FormControl(id),
+      'userName': new FormControl(userName, Validators.required),
+      'email': new FormControl(email, [Validators.required, Validators.email]),
+      'firstName': new FormControl(firstName, Validators.required),
+      'lastName': new FormControl(lastName, Validators.required),
+    })
   }
 
   onSubmit() {
@@ -84,7 +68,7 @@ export class UserEditComponent implements OnInit {
       this.dataStorageService.insertUser(this.userForm.value).subscribe(
         (response: Response) => {
           this.dataStorageService.getUsers();
-         this.router.navigate(['/users/list']);
+          this.router.navigate(['/users/list']);
         }, (error) => {
         }
       );
@@ -97,6 +81,6 @@ export class UserEditComponent implements OnInit {
         }
       );
     }
-    
+
   }
 }

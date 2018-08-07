@@ -1,6 +1,5 @@
 import { User } from "src/app/model/user.model";
 import { Subject } from "rxjs/internal/Subject";
-import { Http, Response } from '@angular/http';
 
 export class UserService {
     usersChanged = new Subject<User[]>();

@@ -9,7 +9,7 @@
           <div class="panel-body">
             <div class="row">
               <div class="col-md-3 col-lg-3 " align="center">
-                <img alt="Avatar" src="../../../assets/images/image.png" class="img-rounded img-responsive"> </div>
+                <img alt="profileImage" src="/assets/images/image.png" class="img-rounded img-responsive"> </div>
 
               <div class=" col-md-9 col-lg-9 ">
                 <table class="table table-user-information">
@@ -25,7 +25,7 @@
                     <tr>
                       <td>Email: </td>
                       <td>
-                        <a id="email" href="mailto:info@support.com">{{user.email}}</a>
+                        <a id="email" href="mailto:hoanvu.le92@gmail.com">{{user.email}}</a>
                       </td>
                     </tr>
                   </tbody>
@@ -34,15 +34,17 @@
             </div>
           </div>
           <div class="panel-footer">
-            <div class="action">
-              <span>
-                <a class="btn btn-sm btn-warning" (click)="onEdit()">
-                  <i class="fa fa-edit"></i>
-                </a>
-                <a class="btn btn-sm btn-danger" (click)="onRemove()">
-                  <i class="fa fa-close"></i>
-                </a>
-              </span>
+            <div style="height: 40px">
+              <div class="float-right">
+                <span>
+                  <a class="btn btn-sm btn-warning" (click)="onEdit()">
+                    <mat-icon>edit</mat-icon>
+                  </a>
+                  <a class="btn btn-sm btn-danger" (click)="onRemove()">
+                    <mat-icon>close</mat-icon>
+                  </a>
+                </span>
+              </div>
             </div>
           </div>
         </div>

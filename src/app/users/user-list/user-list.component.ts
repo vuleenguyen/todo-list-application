@@ -17,17 +17,16 @@ import { Http, Response } from '@angular/http';
 })
 export class UserListComponent implements OnInit, OnDestroy {
 
-
   users: User[] = [];
   subscription: Subscription;
+  infiniteScroll: any;
+  pageNumber: number = 0;
+
   constructor(private userService: UserService, private dataStorageService: DataStorageService,
     private router: Router,
     private route: ActivatedRoute) {
   }
 
-  infiniteScroll: any;
-
-  pageNumber = 0;
   ngOnInit() {
     this.users = this.userService.getUsers();
     if (this.users.length == 0) {
@@ -50,20 +49,20 @@ export class UserListComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
-  onNewUser() {
-    console.log("click new");
+  onNew() {
     this.router.navigate(['/users/new']);
   }
 
   loadMore(event) {
-    console.log('scrolled!!' + event);
-    // this.dataStorageService.getUsersWithPaging(this.pageNumber).subscribe(
-    //   (response: Response) => {
-    //     const users: User[] = response.json();
-    //     for(let i = 0; i < users.length; i++) this.users.push(users[i]);
-    //     this.pageNumber++;
-    //   }
-    // );
-    // console.log(this.infiniteScroll);
+    /* This block of code used for infinite scroll bar loading
+    this.dataStorageService.getUsersWithPaging(this.pageNumber).subscribe(
+      (response: Response) => {
+        const users: User[] = response.json();
+        for(let i = 0; i < users.length; i++) this.users.push(users[i]);
+        this.pageNumber++;
+      }
+    );
+    console.log(this.infiniteScroll);
+    */
   }
 }
