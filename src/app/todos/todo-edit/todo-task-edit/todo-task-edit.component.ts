@@ -41,6 +41,8 @@ export class TodoTaskEditComponent implements OnInit {
   }
 
   loadUserData() {
+    if (this.users === undefined || this.users.length == 0) this.dataStorageService.getUsers();
+
     this.userService.usersChanged.subscribe(
       (users: User[]) => {
         this.users = users;

@@ -59,6 +59,11 @@ export class DataStorageService {
         return this.http.post('http://localhost:8080/tasks/add/users/' + task.assignedUserId, task);
     }
 
+    deleteTask(taskId: number) {
+        console.log("jksjkdsajk");
+        return this.http.delete('http://localhost:8080/tasks/' + taskId);
+    }
+
     updateTask(task: Task) {
         return this.http.put('http://localhost:8080/tasks/update/users/' + task.assignedUserId, task);
     }

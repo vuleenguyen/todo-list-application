@@ -6,6 +6,7 @@ import { DataStorageService } from 'src/app/shared/data-storage.services';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/users/user.service';
 import { User } from 'src/app/model/user.model';
+import { Response } from '@angular/http/src/static_response';
 
 @Component({
   selector: 'app-task-list',
@@ -82,6 +83,15 @@ export class TaskListComponent implements OnInit {
 
   onEdit(event, item) {
     this.router.navigate(['/tasks/' + item.id + '/edit']);
+  }
+
+  onRemove(event, item) {
+    
+    this.dataStorageService.deleteTask(item.id).subscribe(
+      (response: Response) => {
+        this.dataStorageService.getTasks();
+      }
+    );
   }
 
   onChangeUser(newUser: User) {
