@@ -6,10 +6,12 @@
 #statusFilter {
     float: right;
     margin-bottom: 10px;
+    font-size: 14px;
 }
 
 #userFilter {
     float: right;
+    font-size: 14px;
 }
 
 
@@ -26,4 +28,12 @@ select {
 
 select.right {
     margin-right: 10px;
+}
+
+th {
+    font-size: 13px;
+}
+
+td {
+    font-size: 15px;
 }

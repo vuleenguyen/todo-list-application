@@ -1,8 +1,11 @@
 <div class="row">
   <div class="col-sm-5">
     <div class="container">
-      <button id="newUserBtn" class="btn btn-success" (click)="onNewUser()"><i class="fa fa-plus"></i> User</button>
-      
+      <!-- //<button id="newUserBtn" class="btn btn-success" (click)="onNewUser()"><i class="fa fa-plus"></i> User</button> -->
+      <button mat-flat-button (click)="onNewUser()" id="newUserBtn">
+          <mat-icon>add</mat-icon>
+          Add</button>
+
     </div>
     <div class="container"
     infiniteScroll [infiniteScrollDistance]="0" 
