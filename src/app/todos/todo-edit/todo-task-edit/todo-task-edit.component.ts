@@ -14,7 +14,7 @@ import { TodoEditService } from 'src/app/todos/todo-edit/todo-edit.service';
 export class TodoTaskEditComponent implements OnInit {
   
   displayedColumns = ['name', 'description', 'status', 'assigned to'];
-  tasks: Task[];
+  tasks: Task[] = [];
   taskStatuses = Task.TaskStatus;
   users : User[];
   dataSource = null;
@@ -33,7 +33,6 @@ export class TodoTaskEditComponent implements OnInit {
     this.todoEditService.taskChanged.subscribe(
       (task: Task) => {
         console.log("add Task");
-        if (this.tasks === undefined) this.tasks = [];
         this.tasks.push(new Task());
         this.dataSource = new MatTableDataSource(this.tasks);
         this.todoEditService.setTasks(this.tasks);
