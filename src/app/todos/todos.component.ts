@@ -1,10 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
-import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
-
-/**
- * @title Data table with sorting, pagination, and filtering.
- */
-
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-todos',

@@ -32,7 +32,6 @@ export class TodoTaskEditComponent implements OnInit {
   loadRow() {
     this.todoEditService.taskChanged.subscribe(
       (task: Task) => {
-        console.log("add Task");
         this.tasks.push(new Task());
         this.dataSource = new MatTableDataSource(this.tasks);
         this.todoEditService.setTasks(this.tasks);
@@ -42,7 +41,6 @@ export class TodoTaskEditComponent implements OnInit {
 
   loadUserData() {
     if (this.users === undefined || this.users.length == 0) this.dataStorageService.getUsers();
-
     this.userService.usersChanged.subscribe(
       (users: User[]) => {
         this.users = users;

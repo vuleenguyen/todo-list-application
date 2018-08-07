@@ -1,6 +1,6 @@
-<div class="example-container mat-elevation-z8" *ngIf="tasks.length > 0">
+<div class="table-container mat-elevation-z8" *ngIf="tasks.length > 0">
 	<mat-table #table [dataSource]="dataSource">
-		  <!-- Checkbox Column -->
+		  
 		<ng-container matColumnDef="name">
 			<mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
 			<mat-cell *matCellDef="let task">
@@ -9,8 +9,6 @@
 				</mat-form-field>
 			</mat-cell>
 		</ng-container>
-
-
 		<ng-container matColumnDef="description">
 			<mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
 			<mat-cell *matCellDef="let task">
@@ -19,7 +17,6 @@
 				</mat-form-field>
 			</mat-cell>
 		</ng-container>
-
 		<ng-container matColumnDef="status">
 			<mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
 			<mat-cell *matCellDef="let task">
@@ -31,7 +28,6 @@
 				</mat-form-field>
 			</mat-cell>
 		</ng-container>
-
 		<ng-container matColumnDef="assigned to">
 			<mat-header-cell *matHeaderCellDef> Assigned To </mat-header-cell>
 			<mat-cell *matCellDef="let task">
@@ -43,7 +39,6 @@
 				</mat-form-field>
 			</mat-cell>
 		</ng-container>
-
 		<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
 		<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
 	</mat-table>

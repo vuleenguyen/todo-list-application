@@ -1,21 +1,21 @@
-.example-container {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .example-container > * {
-    width: 100%;
-  }
+.table-container {
+  display: flex;
+  flex-direction: column;
+}
 
-  app-todo-task-edit {
-    margin-top: 20px;
-  }
+.table-container > * {
+  width: 100%;
+}
 
-  #addTaskBtn {
-    width: 15%;
-    margin-top: 10px;
-  }
+app-todo-task-edit {
+  margin-top: 20px;
+}
 
-  #todoInsertBtn {
-    float: right;
-  }
+#addTaskBtn {
+  width: 15%;
+  margin-top: 10px;
+}
+
+#todoInsertBtn {
+  float: right;
+}

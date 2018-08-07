@@ -33,7 +33,6 @@ export class TodoListComponent {
 
     this.todoService.todoChanged.subscribe(
       (todos: TodoList[]) => {
-        console.log("load done");
         this.todos = todos;
         this.dataSource = new MatTableDataSource(todos);
         this.dataSource.paginator = this.paginator;
@@ -47,11 +46,9 @@ export class TodoListComponent {
   }
 
   ngAfterViewInit() {
-
   }
 
   showTasksWithSelectedRow(data: any) {
-    console.log(data);
     const todo: TodoList = data;
     this.selectedRowIndex = todo.id;
     this.todoService.setTasks(todo.tasksList);

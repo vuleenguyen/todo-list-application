@@ -18,15 +18,15 @@ export class TodoEditComponent implements OnInit {
 
 
   todoForm: FormGroup;
+  taskList: Task[] = [];
+  tasks: Task[];
+
   constructor(private todoEditService: TodoEditService, private dataStorageService: DataStorageService,
     private router: Router) { }
-  tasks: Task[];
+  
   ngOnInit() {
     this.initForm();
   }
-
-  taskList: Task[] = [];
-
 
   initForm() {
     let name = '';
@@ -38,7 +38,6 @@ export class TodoEditComponent implements OnInit {
   }
 
   addTasks() {
-    console.log("Add Task");
     const task: Task = new Task();
     this.todoEditService.addTaskRow(task)
   }

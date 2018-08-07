@@ -19,15 +19,12 @@ export class TodoTaskListComponent implements OnInit {
   tasks: Task[] = [];
 
   constructor(private todoService: TodoService) {
-
-    // Assign the data to the data source for the table to render
   }
 
   ngOnInit(): void {
-
-
     this.todoService.taskChanged.subscribe(
       (tasks: Task[]) => {
+        console.log("task change");
         this.tasks = tasks
         this.dataSource = new MatTableDataSource(this.tasks);
         this.dataSource.paginator = this.paginator;
@@ -36,9 +33,7 @@ export class TodoTaskListComponent implements OnInit {
     )
   }
 
-
   ngAfterViewInit() {
-
   }
 
   applyFilter(filterValue: string) {

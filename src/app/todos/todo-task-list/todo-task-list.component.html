@@ -4,7 +4,7 @@
   </mat-form-field>
 </div>
 
-<div class="example-container mat-elevation-z8" *ngIf="tasks.length > 0">
+<div class="table-container mat-elevation-z8" *ngIf="tasks.length > 0">
 
   <mat-table [dataSource]="dataSource" matSort>
 
@@ -34,11 +34,11 @@
 
     <ng-container matColumnDef="Assigned User">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Assigned User </mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.assignedUser?.name}} </mat-cell>
+      <mat-cell *matCellDef="let row"> {{row.assignedUser.userName}} </mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;">
+    <mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{ 'highlight': selectedRowIndex == row.id}">
     </mat-row>
   </mat-table>
 
