@@ -20,6 +20,7 @@ export class UserEditComponent implements OnInit {
   userForm: FormGroup;
   isEdit = false;
 
+  isFormEditLoad: boolean = false;
   constructor(private route: ActivatedRoute,
     private router: Router, private dataStorageService: DataStorageService
     , private userService: UserService) {
@@ -43,6 +44,7 @@ export class UserEditComponent implements OnInit {
         (response: Response) => {
           const user = response.json();
           this.initForm(user.id, user.userName, user.email, user.firstName, user.lastName);
+          this.isFormEditLoad = true;
         }
       )
 
@@ -62,14 +64,12 @@ export class UserEditComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log("ajaja");
     console.log(this.userForm.value);
     if (!this.isEdit) {
       this.dataStorageService.insertUser(this.userForm.value).subscribe(
         (response: Response) => {
           this.dataStorageService.getUsers();
           this.router.navigate(['/users/list']);
-        }, (error) => {
         }
       );
     } else {
@@ -81,6 +81,9 @@ export class UserEditComponent implements OnInit {
         }
       );
     }
+  }
 
+  onBack() {
+    this.router.navigate(['/users/list']);
   }
 }

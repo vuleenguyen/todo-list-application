@@ -1,4 +1,4 @@
-<form class="mbr-form" [formGroup]="userForm" (ngSubmit)="onSubmit()">
+<form *ngIf="!isEdit || (isEdit && isFormEditLoad)" class="mbr-form" [formGroup]="userForm" (ngSubmit)="onSubmit()">
     <input type="text" class="form-control" name="id" formControlName="id" type="hidden" id="id">
     <div class="row row-sm-offset">
         <div class="col-md-6 multi-horizontal" data-for="userName">
@@ -28,5 +28,6 @@
     </div>
     <span class="input-group-btn">
         <button [disabled]="userForm.invalid" type="submit" class="btn btn-primary btn-form display-4">{{ !isEdit ? 'Insert' : 'Update'}}</button>
+        <button class="btn btn-secondary btn-form display-4" (click)="onBack()">Back</button>
     </span>
 </form>
