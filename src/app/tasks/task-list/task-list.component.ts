@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { TaskService } from 'src/app/tasks/task.service';
-import { TagContentType } from '@angular/compiler';
 import { Task } from 'src/app/model/task.model';
 import { DataStorageService } from 'src/app/shared/data-storage.services';
 import { Router } from '@angular/router';
@@ -26,9 +25,25 @@ export class TaskListComponent implements OnInit {
   statuses: any;
 
   ngOnInit() {
-    console.log("getAllTasks");
+    console.log("get All Tasks");
     this.tasks = this.taskService.getTasks();
     this.initData();
+  }
+
+  initData() {
+    this.statuses = Task.TaskStatus;
+    let isExistNotCompleteStatus = false;
+    for (let i = 0; i < this.statuses.length; i++) {
+      if (this.statuses[i].name === "notcompleted") {
+        isExistNotCompleteStatus = true;
+        break;
+      }
+    }
+    console.log("initdata");
+    if (!isExistNotCompleteStatus) {
+      this.statuses.push({ id: 4, name: "notcompleted" });
+    }
+
     if (this.tasks.length == 0) {
       this.loadTasks();
     }
@@ -48,23 +63,6 @@ export class TaskListComponent implements OnInit {
         this.users = users;
       }
     );
-
-
-  }
-
-  initData() {
-    this.statuses = Task.TaskStatus;
-    let isExitNotCompleteStatus = false;
-    for (let i = 0; i < this.statuses.length; i++) {
-      if (this.statuses[i].name === "notcompleted") {
-        isExitNotCompleteStatus = true;
-        break;
-      }
-    }
-    console.log("initdata");
-    if (!isExitNotCompleteStatus) {
-      this.statuses.push({ id: 4, name: "notcompleted" });
-    }
   }
 
   loadTasks() {
@@ -76,9 +74,7 @@ export class TaskListComponent implements OnInit {
   }
 
   onNewTask() {
-    this.router.navigate([
-      '/tasks/new'
-    ])
+    this.router.navigate(['/tasks/new'])
   }
 
   onEdit(event, item) {
@@ -86,7 +82,6 @@ export class TaskListComponent implements OnInit {
   }
 
   onRemove(event, item) {
-    
     this.dataStorageService.deleteTask(item.id).subscribe(
       (response: Response) => {
         this.dataStorageService.getTasks();
@@ -111,6 +106,5 @@ export class TaskListComponent implements OnInit {
     } else {
       this.dataStorageService.getTasksByUserAndStatus(this.selectedUserObj, this.selectedStatus.name);
     }
-
   }
 }

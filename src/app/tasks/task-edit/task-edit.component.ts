@@ -116,4 +116,8 @@ export class TaskEditComponent implements OnInit {
     }
   }
 
+  onBack() {
+    this.router.navigate(['tasks/list']);
+  }
+
 }
