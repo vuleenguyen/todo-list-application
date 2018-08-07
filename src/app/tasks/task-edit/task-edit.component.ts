@@ -32,61 +32,48 @@ export class TaskEditComponent implements OnInit {
       (params: Params) => {
         this.id = +params['id'];
         this.isEditMode = params['id'] !== undefined;
-        this.initForm();
+        this.initData();
       }
     );
-
   }
 
-  private initForm() {
-
+  private initData() {
     this.statuses = Task.TaskStatus;
-    let name = '';
-    let description = '';
-    let assignedUserName = '';
-    let status = '';
-
     if (this.isEditMode) {
       this.dataStorageService.getTask(this.id).subscribe(
         (response: Response) => {
           const task: Task = response.json();
-          name = task.name;
-          description = task.description;
-          assignedUserName = task.assignedUser === null ? null : task.assignedUser.userName;
-          status = task.status;
           this.dataStorageService.getUsersFromTask().subscribe(
             (response: Response) => {
               const users: User[] = response.json();
               this.users = users;
-              this.taskForm = new FormGroup({
-                'id': new FormControl(this.id),
-                'name': new FormControl(name, Validators.required),
-                'assignedUserName': new FormControl(assignedUserName),
-                'description': new FormControl(description, Validators.required),
-                'status': new FormControl(status)
-              });
+              this.initForm(this.id, task.name, task.assignedUser === null ? null : task.assignedUser.userName
+                , task.description, task.status);
               this.isDataAvailable = true;
             }
           );
         }
       )
-
     } else {
       this.dataStorageService.getUsersFromTask().subscribe(
         (response: Response) => {
           const users: User[] = response.json();
           this.users = users;
-          this.taskForm = new FormGroup({
-            'id': new FormControl(this.id),
-            'name': new FormControl(name, Validators.required),
-            'assignedUserName': new FormControl(null),
-            'description': new FormControl(description, Validators.required),
-            'status': new FormControl("inprogress")
-          });
+          this.initForm(this.id, '', null, '', "inprogress");
           this.isDataAvailable = true;
         }
       );
     }
+  }
+
+  initForm(id: number, name: string, assignedUserName: string, description: string, status: string) {
+    this.taskForm = new FormGroup({
+      'id': new FormControl(id),
+      'name': new FormControl(name, Validators.required),
+      'assignedUserName': new FormControl(assignedUserName),
+      'description': new FormControl(description, Validators.required),
+      'status': new FormControl(status)
+    });
   }
 
   onSubmit() {
