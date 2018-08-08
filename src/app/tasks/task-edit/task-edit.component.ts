@@ -60,7 +60,7 @@ export class TaskEditComponent implements OnInit {
         (response: Response) => {
           const users: User[] = response.json();
           this.users = users;
-          this.initForm(this.id, '', null, '', "inprogress");
+          this.initForm(this.id, '', null, '', "notstarted");
           this.isDataAvailable = true;
         }
       );
