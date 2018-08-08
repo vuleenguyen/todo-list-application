@@ -14,13 +14,14 @@ import { CommonModule, Location } from "@angular/common";
 import { tick } from "@angular/core/testing";
 import { UsersRoutingModule } from "src/app/users/users-routing.module";
 import { UserDetailComponent } from "src/app/users/user-detail/user-detail.component";
+import { UserDataStorageService } from "src/app/shared/user-data-storage.services";
 
 beforeEach(() => {
     TestBed.configureTestingModule({
         providers: [
             UserListComponent,
             { provide: UserService, useClass: MockUserService },
-            { provide: DataStorageService, useClass: MockDataStorageService }, TaskService, TodoService, Location
+            { provide: DataStorageService, useClass: MockDataStorageService }, UserDataStorageService ,TaskService, TodoService, Location
         ], imports: [
             HttpModule, RouterTestingModule
         ]
