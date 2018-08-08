@@ -15,8 +15,6 @@ import { tick } from "@angular/core/testing";
 import { UsersRoutingModule } from "src/app/users/users-routing.module";
 import { UserDetailComponent } from "src/app/users/user-detail/user-detail.component";
 
-
-
 beforeEach(() => {
     TestBed.configureTestingModule({
         providers: [
@@ -27,7 +25,6 @@ beforeEach(() => {
             HttpModule, RouterTestingModule
         ]
     }).compileComponents();
-
 });
 
 it('should create component successfully', async(inject([UserService, DataStorageService], (service) => {

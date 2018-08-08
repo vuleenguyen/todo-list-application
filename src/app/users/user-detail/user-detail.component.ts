@@ -3,8 +3,8 @@ import { User } from 'src/app/model/user.model';
 import { UserService } from 'src/app/users/user.service';
 import { ActivatedRoute } from '@angular/router';
 import { Router, Params } from '@angular/router';
-import { DataStorageService } from 'src/app/shared/data-storage.services';
 import { Http, Response } from '@angular/http';
+import { UserDataStorageService } from 'src/app/shared/user-data-storage.services';
 
 @Component({
   selector: 'app-user-detail',
@@ -17,7 +17,7 @@ export class UserDetailComponent implements OnInit {
   isDataAvailable: boolean = false;
 
   constructor(private userService: UserService, private route: ActivatedRoute
-    , private router: Router, private dataStorageService: DataStorageService) {
+    , private router: Router, private userDataStorageService: UserDataStorageService) {
     
   }
 
@@ -25,7 +25,7 @@ export class UserDetailComponent implements OnInit {
     this.route.params.subscribe(
       (params: Params) => {
         this.id = +params['id'];
-        this.dataStorageService.getUser(this.id).subscribe(
+        this.userDataStorageService.getUser(this.id).subscribe(
           (response: Response) => {
             const user: User = response.json();
             this.user = user;
@@ -42,9 +42,9 @@ export class UserDetailComponent implements OnInit {
   }
 
   onRemove() {
-    this.dataStorageService.removeUser(this.user).subscribe(
+    this.userDataStorageService.removeUser(this.user).subscribe(
       (response: Response) => {
-        this.dataStorageService.getUsers();
+        this.userDataStorageService.getUsers();
         this.router.navigate(['/users/list']);
       }
     );

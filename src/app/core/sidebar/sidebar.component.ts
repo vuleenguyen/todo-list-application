@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataStorageService } from 'src/app/shared/data-storage.services';
+import { UserDataStorageService } from 'src/app/shared/user-data-storage.services';
 
 @Component({
   selector: 'app-sidebar',
@@ -8,17 +9,18 @@ import { DataStorageService } from 'src/app/shared/data-storage.services';
 })
 export class SidebarComponent implements OnInit {
 
-  constructor(private dataStorageService: DataStorageService) { }
+  constructor(private dataStorageService: DataStorageService, 
+    private userDataStorageService: UserDataStorageService) { }
 
   ngOnInit() {
   }
 
   onFetchUser() {
-    this.dataStorageService.getUsers();
+    this.userDataStorageService.getUsers();
   }
 
   onFetchTask() {
-    this.dataStorageService.getUsers();
+    this.userDataStorageService.getUsers();
     this.dataStorageService.getTasks();
   }
 

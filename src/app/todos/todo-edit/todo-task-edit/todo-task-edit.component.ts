@@ -5,6 +5,7 @@ import { User } from 'src/app/model/user.model';
 import { DataStorageService } from 'src/app/shared/data-storage.services';
 import { UserService } from 'src/app/users/user.service';
 import { TodoEditService } from 'src/app/todos/todo-edit/todo-edit.service';
+import { UserDataStorageService } from 'src/app/shared/user-data-storage.services';
 
 @Component({
   selector: 'app-todo-task-edit',
@@ -19,7 +20,9 @@ export class TodoTaskEditComponent implements OnInit {
   users: User[];
   dataSource = null;
 
-  constructor(private dataStorageService: DataStorageService, private userService: UserService,
+  constructor(private dataStorageService: DataStorageService, 
+    private userDataStorageService: UserDataStorageService,
+    private userService: UserService,
     private todoEditService: TodoEditService) {
   }
 
@@ -40,7 +43,7 @@ export class TodoTaskEditComponent implements OnInit {
   }
 
   loadUserData() {
-    if (this.users === undefined || this.users.length == 0) this.dataStorageService.getUsers();
+    if (this.users === undefined || this.users.length == 0) this.userDataStorageService.getUsers();
     this.userService.usersChanged.subscribe(
       (users: User[]) => {
         this.users = users;

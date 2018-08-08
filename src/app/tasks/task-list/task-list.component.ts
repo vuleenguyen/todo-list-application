@@ -6,6 +6,8 @@ import { Router } from '@angular/router';
 import { UserService } from 'src/app/users/user.service';
 import { User } from 'src/app/model/user.model';
 import { Response } from '@angular/http/src/static_response';
+import { UserDetailComponent } from 'src/app/users/user-detail/user-detail.component';
+import { UserDataStorageService } from 'src/app/shared/user-data-storage.services';
 
 @Component({
   selector: 'app-task-list',
@@ -15,6 +17,7 @@ import { Response } from '@angular/http/src/static_response';
 export class TaskListComponent implements OnInit {
   tasks: Task[] = [];
   constructor(private taskService: TaskService, private dataStorageService: DataStorageService,
+    private userDataStorageService: UserDataStorageService,
     private router: Router, private userService: UserService) { }
 
   selectedUserObj: User;
@@ -70,7 +73,7 @@ export class TaskListComponent implements OnInit {
   }
 
   loadUsers() {
-    this.dataStorageService.getUsers();
+    this.userDataStorageService.getUsers();
   }
 
   onNewTask() {

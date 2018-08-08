@@ -9,6 +9,7 @@ import { error } from '@angular/compiler/src/util';
 import { User } from 'src/app/model/user.model';
 import { Subscription } from 'rxjs';
 import { UserService } from 'src/app/users/user.service';
+import { UserDataStorageService } from 'src/app/shared/user-data-storage.services';
 
 @Component({
   selector: 'app-user-edit',
@@ -23,7 +24,7 @@ export class UserEditComponent implements OnInit {
   isFormEditLoad: boolean = false;
   isSubmitted = false;
   
-  constructor(private dataStorageService: DataStorageService
+  constructor(private userDataStorageService: UserDataStorageService
     , private userService: UserService, private router: Router, private route: ActivatedRoute, ) {
   }
 
@@ -41,7 +42,7 @@ export class UserEditComponent implements OnInit {
     const emptyString = '';
 
     if (this.isEdit) {
-      this.dataStorageService.getUser(this.id).subscribe(
+      this.userDataStorageService.getUser(this.id).subscribe(
         (response: Response) => {
           const user = response.json();
           this.initForm(user.id, user.userName, user.email, user.firstName, user.lastName);
@@ -69,17 +70,17 @@ export class UserEditComponent implements OnInit {
     this.isSubmitted = true;
     if (this.userForm === undefined) return;
     if (!this.isEdit) {
-      this.dataStorageService.insertUser(this.userForm.value).subscribe(
+      this.userDataStorageService.insertUser(this.userForm.value).subscribe(
         (response: Response) => {
-          this.dataStorageService.getUsers();
+          this.userDataStorageService.getUsers();
           this.router.navigate(['/users/list']);
         }
       );
     } else {
       console.log("update");
-      this.dataStorageService.updateUser(this.userForm.value).subscribe(
+      this.userDataStorageService.updateUser(this.userForm.value).subscribe(
         (response: Response) => {
-          this.dataStorageService.getUsers();
+          this.userDataStorageService.getUsers();
           this.router.navigate(['/users/list']);
         }
       );

@@ -29,6 +29,7 @@ import { TodoTaskEditComponent } from './todos/todo-edit/todo-task-edit/todo-tas
 import { TodoEditService } from 'src/app/todos/todo-edit/todo-edit.service';
 import { UsersModule } from 'src/app/users/users.module';
 import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import { UserDataStorageService } from 'src/app/shared/user-data-storage.services';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,7 @@ import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
     SharedModule,
     AppRoutingModule,
   ],
-  providers: [UserService, TaskService, TodoService, TodoEditService, DataStorageService],
+  providers: [UserService, TaskService, TodoService, TodoEditService, DataStorageService, UserDataStorageService],
   bootstrap: [AppComponent],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA],
 })

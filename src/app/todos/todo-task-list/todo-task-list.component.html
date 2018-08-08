@@ -1,4 +1,4 @@
-<div class="example-header" *ngIf="tasks.length > 0">
+<div class="table-header" *ngIf="tasks.length > 0">
   <mat-form-field>
     <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
   </mat-form-field>

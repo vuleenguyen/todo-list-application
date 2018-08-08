@@ -7,6 +7,7 @@ import { Router, NavigationStart } from '@angular/router';
 import { DataStorageService } from 'src/app/shared/data-storage.services';
 import { ActivatedRoute } from '@angular/router';
 import { Http, Response } from '@angular/http';
+import { UserDataStorageService } from 'src/app/shared/user-data-storage.services';
 
 
 
@@ -22,7 +23,7 @@ export class UserListComponent implements OnInit, OnDestroy {
   infiniteScroll: any;
   pageNumber: number = 0;
 
-  constructor(private userService: UserService, private dataStorageService: DataStorageService,
+  constructor(private userService: UserService, private userDataStorageService: UserDataStorageService,
     private router: Router,
     private route: ActivatedRoute) {
   }
@@ -42,7 +43,7 @@ export class UserListComponent implements OnInit, OnDestroy {
 
   loadUsers() {
     // this.dataStorageService.getUsersWithPagingInit(this.pageNumber);
-    this.dataStorageService.getUsers();
+    this.userDataStorageService.getUsers();
   }
 
   ngOnDestroy() {

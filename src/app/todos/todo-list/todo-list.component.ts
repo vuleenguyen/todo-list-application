@@ -6,6 +6,7 @@ import { DataStorageService } from 'src/app/shared/data-storage.services';
 import { Router } from '@angular/router';
 import { TodoList } from 'src/app/model/todo.model';
 import { Response } from '@angular/http';
+import { UserDataStorageService } from 'src/app/shared/user-data-storage.services';
 
 @Component({
   selector: 'app-todo-list',
@@ -24,6 +25,7 @@ export class TodoListComponent {
   isRowSelected = true;
 
   constructor(private todoService: TodoService, private dataStorageService: DataStorageService,
+    private userDataStorageService: UserDataStorageService,
     private router: Router) { }
 
   ngOnInit() {
@@ -65,7 +67,7 @@ export class TodoListComponent {
   }
 
   onNewTodo() {
-    this.dataStorageService.getUsers();
+    this.userDataStorageService.getUsers();
     this.router.navigate(['todos/new']);
   }
 
