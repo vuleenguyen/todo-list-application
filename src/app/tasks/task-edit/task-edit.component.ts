@@ -26,6 +26,7 @@ export class TaskEditComponent implements OnInit {
   isEditMode: boolean = false;
   id: number;
   editTask: Task;
+  isSubmitted: boolean = false;
 
   ngOnInit() {
     this.route.params.subscribe(
@@ -77,6 +78,8 @@ export class TaskEditComponent implements OnInit {
   }
 
   onSubmit() {
+    this.isSubmitted = true;
+    if (this.taskForm === undefined) return;
     const task: Task = this.taskForm.value;
     const id = this.getId(task.assignedUserName);
     task.assignedUserId = id;
