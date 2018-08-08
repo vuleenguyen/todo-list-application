@@ -21,9 +21,10 @@ export class UserEditComponent implements OnInit {
   isEdit = false;
 
   isFormEditLoad: boolean = false;
-  constructor(private route: ActivatedRoute,
-    private router: Router, private dataStorageService: DataStorageService
-    , private userService: UserService) {
+  isSubmitted = false;
+  
+  constructor(private dataStorageService: DataStorageService
+    , private userService: UserService, private router: Router, private route: ActivatedRoute, ) {
   }
 
   ngOnInit() {
@@ -51,6 +52,7 @@ export class UserEditComponent implements OnInit {
     } else {
       this.initForm(emptyString, emptyString, emptyString, emptyString, emptyString);
     }
+
   }
 
   initForm(id: string, userName: string, email: string, firstName: string, lastName: string) {
@@ -64,7 +66,8 @@ export class UserEditComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.userForm.value);
+    this.isSubmitted = true;
+    if (this.userForm === undefined) return;
     if (!this.isEdit) {
       this.dataStorageService.insertUser(this.userForm.value).subscribe(
         (response: Response) => {
